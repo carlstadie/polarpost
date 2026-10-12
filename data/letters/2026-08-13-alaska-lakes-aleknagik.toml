@@ -1,0 +1,48 @@
+id         = "L0008"
+expedition = "alaska-lakes-2026"
+kind       = "description"
+collector  = "wr"
+posted_at  = "fairbanks"
+posted_on  = 2026-08-13
+year       = 2026
+cover      = "2026-alaska-lakes-aleknagik.jpg"
+
+note = """
+Franked with two international-rate stamps rather than a high value and a low one,
+and machine cancelled at Fairbanks on the way south. The heading names the three
+lakes the party worked on.
+"""
+note_de = """
+Mit zwei Auslandsmarken statt einem hohen und einem kleinen Wert frankiert und auf
+dem Weg nach Süden in Fairbanks maschinell entwertet. Die Überschrift nennt die
+drei Seen, an denen die Gruppe gearbeitet hat.
+"""
+
+[[marks]]
+ref = "fieldnote:alaska-lakes-2026"
+box = [0.017, 0.031, 0.439, 0.256]
+
+[[marks]]
+ref  = "postmark:alaskan-frontier-fairbanks"
+box  = [0.260, 0.060, 0.330, 0.120]
+date = 2026-08-13
+
+[[marks]]
+ref = "stamp:us-2022-global-forever-flower"
+box = [0.570, 0.020, 0.185, 0.297]
+
+[[marks]]
+ref  = "stamp:us-2022-global-forever-flower"
+box  = [0.741, 0.016, 0.228, 0.321]
+note = "A second copy of the same stamp. Two Global Forever stamps cover the rate without a high value."
+note_de = "Ein zweites Exemplar derselben Marke. Zwei Global-Forever-Marken decken das Porto ohne hohen Wert."
+
+[[marks]]
+ref  = "signatures"
+box  = [0.017, 0.511, 0.539, 0.429]
+note = "Seven signatures across the lower half. Not yet transcribed."
+note_de = "Sieben Unterschriften über die untere Hälfte. Noch nicht transkribiert."
+
+[[marks]]
+ref = "collector:wr"
+box = [0.581, 0.650, 0.419, 0.274]

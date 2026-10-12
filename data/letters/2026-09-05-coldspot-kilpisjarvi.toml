@@ -1,0 +1,44 @@
+id         = "L0003"
+expedition = "coldspot-2026"
+kind       = "description"
+collector  = "wr"
+posted_at  = "oulu"
+posted_on  = 2026-09-05
+year       = 2026
+cover      = "2026-coldspot-kilpisjarvi.jpg"
+
+note = """
+No printed cachet on this one: the team wrote the expedition heading and a short
+description of the greenhouse gas work straight onto the cover. Mail from the
+Kilpisjärvi station is cancelled at Oulu, several hundred kilometres south.
+"""
+note_de = """
+Hier gibt es keinen gedruckten Stempel: Das Team hat Überschrift und eine kurze
+Beschreibung der Treibhausgasarbeit direkt auf den Umschlag geschrieben. Post von
+der Station Kilpisjärvi wird in Oulu abgestempelt, mehrere hundert Kilometer
+südlich.
+"""
+
+[[marks]]
+ref = "fieldnote:coldspot-2026"
+box = [0.021, 0.016, 0.500, 0.285]
+
+[[marks]]
+ref  = "postmark:oulu-posti"
+box  = [0.475, 0.061, 0.149, 0.204]
+date = 2026-09-05
+
+[[marks]]
+ref = "stamp:fi-priority-lake"
+box = [0.640, 0.020, 0.266, 0.276]
+
+[[marks]]
+ref   = "signatures"
+box   = [0.050, 0.582, 0.354, 0.143]
+people = ["friederike-weisse", "carolin-ammermann"]
+note  = "Two names at lower left. Readings not yet confirmed."
+note_de = "Zwei Namen unten links. Lesungen nicht bestätigt."
+
+[[marks]]
+ref = "collector:wr"
+box = [0.635, 0.694, 0.365, 0.286]

@@ -1,0 +1,19 @@
+# Written by build.py — rebuilt on every push by the Actions workflow,
+# so these do not belong in the repository.
+site/data/
+site/covers/
+site/refs/
+site/assets/css/tokens.css
+proofs/
+
+# Only needed to re-bundle d3; site/assets/js/vendor/geo.js IS committed.
+node_modules/
+package-lock.json
+
+# Never commit an unprocessed scan. Keep raw originals outside the repository;
+# covers/ holds only the blurred, web-sized versions scripts/blur.py produces.
+raw/
+*.tif
+*.tiff
+*.CR2
+*.NEF

@@ -1,0 +1,84 @@
+# People who signed the covers.
+#
+# A signature is the one thing on an expedition cover that records who was
+# actually there. Giving people their own entries turns them into something you
+# can follow: click a name and the globe shows every letter that person signed.
+#
+#   name     as you would print it (never translated)
+#   role     optional — leave it out if unsure
+#   show     false keeps the person off the public site entirely
+#   reading  "uncertain" while the signature has not been confirmed with the
+#            team. The interface says so, so a wrong guess is never presented
+#            as fact.
+#   verify   true while anything here is still unchecked
+#
+# BEFORE YOU PUBLISH: every reading below except Carl's came off the handwriting
+# and none has been confirmed. Ask the teams, correct the names, then clear the
+# flags. Attributing a signature to the wrong person is worse than leaving it
+# blank, and anyone who would rather not appear gets `show = false`.
+
+[carl-stadie]
+name    = "C. Stadie"
+role    = "Permafrost Research, Alfred Wegener Institute"
+role_de = "Permafrostforschung, Alfred-Wegener-Institut"
+show    = true
+
+[m-fritz]
+name    = "M. Fritz"
+show    = true
+reading = "uncertain"
+verify  = true
+
+[a-irrgang]
+name    = "A. Irrgang"
+show    = true
+reading = "uncertain"
+verify  = true
+
+[s-owl]
+name    = "S. Ohl"
+show    = true
+reading = "uncertain"
+verify  = true
+
+[ria-potzold]
+name    = "P. Potzold"
+show    = true
+reading = "uncertain"
+verify  = true
+
+[leena-viitanen]
+name    = "Leena K. Viitanen"
+show    = true
+reading = "uncertain"
+verify  = true
+
+[friederike-weisse]
+name    = "F. Weisse"
+show    = true
+reading = "uncertain"
+verify  = true
+
+[carolin-ammermann]
+name    = "C. Ammermann"
+show    = true
+reading = "uncertain"
+verify  = true
+
+[pauline-walt]
+name    = "P. Walt"
+show    = true
+reading = "uncertain"
+verify  = true
+
+[nils-h]
+name    = "Nils H."
+show    = true
+reading = "uncertain"
+verify  = true
+
+[mara]
+name    = "Mara"
+show    = true
+reading = "uncertain"
+verify  = true

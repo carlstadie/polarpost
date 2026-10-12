@@ -1,0 +1,173 @@
+/* The cover: in the catalogue, and opened large in the detail view.
+   Everything here is driven by assets/js/cover.js. */
+
+/* ── marks on a cover ───────────────────────────────────────────────────────
+   No outlined boxes: a cover ruled into rectangles stops looking like a cover.
+   Each mark has a small numbered dot at its corner and shows its extent only
+   when you are on it. */
+.hotspots { position: absolute; inset: 0 }
+.hotspot { position: absolute; display: block; padding: 0; cursor: pointer; background: none;
+           border: 1.5px solid transparent; border-radius: 4px;
+           transition: border-color .16s, background-color .16s }
+.hotspot b { position: absolute; top: -8px; left: -8px; width: 17px; height: 17px; border-radius: 50%;
+             display: grid; place-items: center; font-size: .62rem; font-weight: 650;
+             color: var(--onaccent); background: var(--spot, var(--cachet));
+             box-shadow: 0 0 0 2px var(--scan), 0 1px 3px var(--shade); opacity: .72;
+             transition: opacity .16s, transform .16s var(--spring) }
+.hotspot:hover, .hotspot:focus-visible, .hotspot.hover {
+  border-color: color-mix(in srgb, var(--spot, var(--cachet)) 55%, transparent);
+  background: color-mix(in srgb, var(--spot, var(--cachet)) 6%, transparent) }
+.hotspot:hover b, .hotspot:focus-visible b, .hotspot.hover b,
+.hotspot[aria-pressed="true"] b { opacity: 1; transform: scale(1.15) }
+.hero .hotspot b { width: 13px; height: 13px; top: -6px; left: -6px; font-size: .5rem;
+                    box-shadow: 0 0 0 1.5px var(--scan) }
+.hero .hotspot { cursor: zoom-in }
+
+/* ── the detail view ────────────────────────────────────────────────────────
+   A glass sheet over the globe, sized to the cover plus a gutter of tags on
+   either side. The cover is never covered: tags live outside it and reach in
+   with a leader line. */
+.detail { position: fixed; z-index: 20; left: var(--gap); top: var(--top);
+          right: calc(var(--side-w) + 2 * var(--gap)); bottom: var(--bottom);
+          display: grid; place-items: center; pointer-events: none }
+.detail[hidden] { display: none }
+.detail-sheet { pointer-events: auto; display: flex; flex-direction: column;
+                max-width: 100%; max-height: 100%; border-radius: 30px }
+
+.detail-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+              padding: .8rem .9rem .5rem 1.15rem }
+.detail-id { min-width: 0; flex: 1 }
+
+/* The minimap: a small globe in the corner of the sheet with this letter's route. */
+.minimap { position: relative; flex: 0 0 auto; width: 104px; height: 104px; margin: -.3rem -.2rem -.2rem -.5rem;
+           border-radius: 50%; cursor: pointer }
+.minimap canvas { display: block; width: 100%; height: 100%; cursor: pointer; touch-action: none }
+.minitip { display: none }
+.detail-bar h2 { font-size: 1.08rem; font-weight: 650; letter-spacing: -.015em; line-height: 1.2; margin: 0 }
+.detail-bar .meta { font-size: .78rem }
+.detail-actions { display: flex; gap: .3rem; flex-shrink: 0 }
+.round { width: 30px; height: 30px; border-radius: 50%; border: 0; cursor: pointer; padding: 0;
+         display: grid; place-items: center; font-size: .95rem; line-height: 1;
+         background: var(--fill); color: var(--ink) }
+.round:hover:not(:disabled) { background: var(--pressed) }
+.round:disabled { opacity: .3; cursor: default }
+
+/* layout() in cover.js sizes the stage and places everything inside it; every
+   coordinate it uses is relative to this box's top-left corner. */
+.detail-stage { position: relative; overflow: hidden }
+.leaders { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2;
+           overflow: visible }
+.leaders path { fill: none; stroke: var(--muted); stroke-width: 1; opacity: .38 }
+.leaders circle { fill: var(--muted); opacity: .45 }
+.leaders path.on { stroke: var(--cachet); stroke-width: 1.6; opacity: 1;
+                   stroke-dasharray: 1; stroke-dashoffset: 1;
+                   animation: draw .42s var(--spring) forwards }
+.leaders circle.on { fill: var(--cachet); opacity: 1 }
+@keyframes draw { to { stroke-dashoffset: 0 } }
+
+.detail-cover { position: absolute; margin: 0; background: var(--scan); border-radius: 5px;
+                box-shadow: 0 1px 2px var(--shade), 0 18px 40px -18px var(--shade) }
+/* While the clone is flying, the real cover waits invisibly in its final place.
+   A class, not an inline style: layout() rewrites the inline style freely. */
+.detail-cover.in-flight { visibility: hidden }
+.detail-cover img { display: block; width: 100%; height: auto; border-radius: 5px }
+
+/* The active mark: a ring and a soft glow. Nothing else on the cover changes. */
+.ring { position: absolute; border: 2px solid var(--cachet); border-radius: 5px; pointer-events: none;
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--cachet) 18%, transparent),
+                    0 0 22px color-mix(in srgb, var(--cachet) 30%, transparent);
+        transition: left .3s var(--spring), top .3s var(--spring),
+                    width .3s var(--spring), height .3s var(--spring) }
+.ring[hidden] { display: none }
+
+/* ── tags ───────────────────────────────────────────────────────────────── */
+.tags { position: absolute; top: 0; bottom: 0; z-index: 3 }
+.tag { position: absolute; left: 0; width: 100%; text-align: left; cursor: pointer;
+       font: inherit; color: inherit; padding: .42rem .65rem .45rem;
+       background: color-mix(in srgb, var(--glassspec) 55%, transparent);
+       border: 1px solid var(--glassedge); border-radius: var(--radius-s);
+       box-shadow: inset 0 1px 0 var(--glassspec), 0 1px 2px var(--shade);
+       transition: top .32s var(--spring), background-color .16s, box-shadow .16s;
+       animation: tag-in .34s var(--spring) both; animation-delay: calc(var(--i, 0) * 32ms + 120ms) }
+.tag:hover { background: color-mix(in srgb, var(--glassspec) 80%, transparent) }
+.tag.minor { opacity: .78 }
+.tag.minor:hover, .tag[aria-pressed="true"] { opacity: 1 }
+/* Once the tags have arrived they stay put; only an opening tag animates. */
+.detail-stage.settled .tag:not([aria-pressed="true"]) { animation: none }
+@keyframes tag-in { from { opacity: 0; transform: translateX(var(--from, 0)) } to { opacity: 1; transform: none } }
+
+.tag .eyebrow { display: flex; align-items: center; gap: .4rem; font-size: .68rem; color: var(--muted) }
+.tag .eyebrow i { width: 16px; height: 16px; border-radius: 50%; display: grid; place-items: center;
+                  font-style: normal; font-size: .58rem; font-weight: 650; color: var(--onaccent);
+                  background: var(--spot, var(--cachet)) }
+.tag .title { display: block; font-size: .86rem; font-weight: 600; line-height: 1.25; margin-top: .1rem;
+              white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+
+/* Open: the tag grows away from the cover, like a drawer pulled outwards.
+   --grow is set per column so it always opens towards the window edge. */
+.tag[aria-pressed="true"] {
+  background: var(--glassspec); overflow-y: auto; overscroll-behavior: contain;
+  box-shadow: inset 0 1px 0 var(--glassspec),
+              0 0 0 1.5px color-mix(in srgb, var(--cachet) 55%, transparent),
+              0 14px 32px -14px var(--shade);
+  transform-origin: var(--grow, left) center;
+  animation: tag-open .38s var(--spring) both }
+@keyframes tag-open { from { transform: scaleX(.94); opacity: .6 } to { transform: none; opacity: 1 } }
+.tag[aria-pressed="true"] .title { white-space: normal; font-size: .95rem }
+.tag .body { display: none }
+.tag[aria-pressed="true"] .body { display: block }
+
+.tag .facts { display: grid; grid-template-columns: auto 1fr; gap: .06rem .6rem;
+              font-size: .74rem; margin: .45rem 0 0 }
+.tag .facts dt { color: var(--muted) }
+.tag .facts dd { margin: 0 }
+.tag p { font-size: .78rem; line-height: 1.45; margin: .45rem 0 0 }
+.tag .says { color: var(--muted); font-style: italic }
+.tag .unsure { color: var(--postmark); font-size: .7rem }
+
+/* A transcription is the writer's words, not ours: set in the hand face, with
+   the translation under it in ours. */
+.tag .script { margin: .45rem 0 0; padding: .1rem 0 .1rem .6rem; border-left: 2px solid var(--cachetsoft);
+               font-family: var(--hand); font-size: .86rem; line-height: 1.42; white-space: pre-line }
+.tag .script-tr { margin: .3rem 0 0; padding-left: .6rem; font-size: .74rem; color: var(--muted);
+                  white-space: pre-line }
+
+.threads { display: flex; flex-wrap: wrap; gap: .3rem; margin: .55rem 0 .05rem }
+.thread { border: 0; border-radius: 999px; cursor: pointer; font: inherit; font-size: .72rem; font-weight: 550;
+          padding: .14rem .6rem; color: var(--cachet);
+          background: color-mix(in srgb, var(--cachet) 12%, transparent) }
+.thread:hover { background: color-mix(in srgb, var(--cachet) 22%, transparent) }
+.thread::after { content: " ›" }
+
+.detail-hint { margin: 0; padding: .1rem 1.15rem .75rem; font-size: .7rem; color: var(--muted) }
+
+/* The cover that flies between the catalogue and the detail view. A fixed
+   clone on <body>, so nothing between the two can clip it on the way. */
+.cover-flight { position: fixed; z-index: 60; pointer-events: none; transform-origin: 0 0;
+                border-radius: 6px; background: var(--scan);
+                box-shadow: 0 20px 50px -16px var(--shade); will-change: transform }
+
+/* ── narrow: everything stacks, nothing points ─────────────────────────── */
+@media (max-width: 900px) {
+  .minimap { display: none }
+  .detail { inset: 0; place-items: stretch; z-index: 40;
+            background: color-mix(in srgb, var(--bg2) 55%, transparent);
+            -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px) }
+  .detail-sheet { border-radius: 0; max-height: none; height: 100%; border: 0 }
+  .detail-stage { overflow-y: auto; flex: 1; padding: 0 .9rem .9rem }
+  .leaders { display: none }
+  /* Still positioned: the dots and the ring are placed against the cover itself. */
+  .detail-cover { position: relative; left: auto !important; top: auto !important;
+                  width: 100% !important; margin-bottom: .45rem; flex: 0 0 auto }
+  /* The two columns dissolve, so the tags fall into mark order beneath the cover. */
+  .detail-stage { display: flex; flex-direction: column; gap: .45rem }
+  .tags { display: contents }
+  .tag { position: static !important; width: auto; max-height: none !important; animation: none }
+  .tag[aria-pressed="true"] { animation: none }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotspot, .hotspot b, .ring, .tag { transition: none }
+  .tag, .tag[aria-pressed="true"], .leaders path.on { animation: none }
+  .leaders path.on { stroke-dashoffset: 0 }
+}

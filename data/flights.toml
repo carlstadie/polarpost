@@ -1,0 +1,36 @@
+# Flights: one entry per research flight that carried covers.
+#
+# A flight cover lists the flight on its face: the date, the aircraft, who flew
+# it and who worked in the back, and the airfields. That list is a mark on the
+# cover (`ref = "flight:<key>"`), and its details live here, once, so several
+# covers from the same flight all point to the same entry.
+#
+# No line is drawn for a flight on the globe: a survey flight usually starts and
+# ends at the same airfield, and the track in between is not on the cover.
+#
+#   date        the day of the flight, e.g. 2026-07-14
+#   aircraft    as printed on the cover, e.g. "Polar 6 (C-GHGF)"
+#   from        airfield it took off from: a key in places.toml
+#   to          airfield it landed at; the same key again for a round trip
+#   pilots      keys in people.toml, in the order printed
+#   science     the science crew, likewise
+#   mechanics   likewise
+#   purpose     what the flight was for, in a sentence (purpose_de in German)
+#   expedition  key from expeditions.toml
+#   verify      true while anything here is still unchecked
+#
+# Anyone in people.toml with show = false is listed as "name not shown".
+#
+# An example, to copy (remove the # signs):
+#
+# [polar6-2026-07-14]
+# date       = 2026-07-14
+# aircraft   = "Polar 6"
+# from       = "inuvik"
+# to         = "inuvik"
+# pilots     = ["pilot-key", "copilot-key"]
+# science    = ["carl-stadie"]
+# mechanics  = ["mechanic-key"]
+# purpose    = "Laser scanning of the Mackenzie Delta coast."
+# purpose_de = "Laserscanning der Küste des Mackenzie-Deltas."
+# expedition = "permax-ground-alaska-2026"

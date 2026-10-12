@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 10 124 100" width="240" height="240"><defs>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#DCE7F7" stop-opacity=".9"/>
+  </linearGradient>
+  <radialGradient id="ball" cx=".45" cy=".4" r=".65">
+    <stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".8" stop-color="#DCE7F7" stop-opacity=".5"/>
+    <stop offset="1" stop-color="#DCE7F7" stop-opacity=".85"/>
+  </radialGradient>
+  <linearGradient id="spec" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="sh" x="-30%" y="-30%" width="160%" height="170%">
+    <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#0F2236" flood-opacity=".18"/>
+  </filter>
+</defs>
+  <g filter="url(#sh)"><circle cx="48" cy="60" r="38" fill="url(#ball)"/></g>
+  <circle cx="48" cy="60" r="38" fill="none" stroke="#1F3F8F" stroke-width="2.2"/>
+  <circle cx="48" cy="60" r="26" fill="none" stroke="#1F3F8F" stroke-width="1.6"/>
+  <path id="arc" d="M18 60 A30 30 0 0 1 78 60" fill="none"/>
+  <text font-family="-apple-system,Segoe UI,Helvetica,sans-serif" font-size="8.6" font-weight="700" letter-spacing="2.4" fill="#1F3F8F">
+    <textPath href="#arc" startOffset="50%" text-anchor="middle">POLARPOST</textPath></text>
+  <path id="arc2" d="M20.5 64 A27.5 27.5 0 0 0 75.5 64" fill="none"/>
+  <text font-family="-apple-system,Segoe UI,Helvetica,sans-serif" font-size="6.4" font-weight="600" letter-spacing="1.6" fill="#1F3F8F">
+    <textPath href="#arc2" startOffset="50%" text-anchor="middle">· 90° N ·</textPath></text>
+  <circle cx="48" cy="60" r="8.50" fill="none" stroke="#1F3F8F" stroke-width="1" stroke-opacity=".8"/><circle cx="48" cy="60" r="17.00" fill="none" stroke="#1F3F8F" stroke-width="1" stroke-opacity=".8"/><line x1="48" y1="60" x2="65.00" y2="60.00" stroke="#1F3F8F" stroke-width="1" stroke-opacity=".8"/><line x1="48" y1="60" x2="60.02" y2="72.02" stroke="#1F3F8F" stroke-width="1" stroke-opacity=".8"/><line x1="48" y1="60" x2="48.00" y2="77.00" stroke="#1F3F8F" stroke-width="1" stroke-opacity=".8"/><line x1="48" y1="60" x2="35.98" y2="72.02" stroke="#1F3F8F" stroke-width="1" stroke-opacity=".8"/><line x1="48" y1="60" x2="31.00" y2="60.00" stroke="#1F3F8F" stroke-width="1" stroke-opacity=".8"/><line x1="48" y1="60" x2="35.98" y2="47.98" stroke="#1F3F8F" stroke-width="1" stroke-opacity=".8"/><line x1="48" y1="60" x2="48.00" y2="43.00" stroke="#1F3F8F" stroke-width="1" stroke-opacity=".8"/><line x1="48" y1="60" x2="60.02" y2="47.98" stroke="#1F3F8F" stroke-width="1" stroke-opacity=".8"/><circle cx="48" cy="60" r="1.60" fill="#1F3F8F"/>
+  <path d="M90 46 q5 -4 10 0 t10 0 t10 0" fill="none" stroke="#1F3F8F" stroke-width="2" stroke-linecap="round"/><path d="M90 55 q5 -4 10 0 t10 0 t10 0" fill="none" stroke="#1F3F8F" stroke-width="2" stroke-linecap="round"/><path d="M90 64 q5 -4 10 0 t10 0 t10 0" fill="none" stroke="#1F3F8F" stroke-width="2" stroke-linecap="round"/><path d="M90 73 q5 -4 10 0 t10 0 t10 0" fill="none" stroke="#1F3F8F" stroke-width="2" stroke-linecap="round"/></svg>

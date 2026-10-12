@@ -1,0 +1,121 @@
+# Field notes: what the team wrote on the cover by hand — a heading, a line
+# about the work, sometimes a whole paragraph. The writing is the content, so it
+# is transcribed exactly and never translated in place.
+#
+#   name            a short name for the note, usually its first line
+#   expedition      key from expeditions.toml
+#   colour          the pen
+#   shows           where on the cover it is and what it covers, in a sentence
+#   transcript      the writing, line for line, exactly as written
+#   transcript_lang the language the hand wrote in: "en" or "de"
+#   translation     English rendering, shown when the reader is not reading in
+#                   the transcript's language. translation_de likewise, for an
+#                   English transcript read in German.
+#   verify          true while anything here is still unchecked
+
+[duccem-2026]
+name            = "DUCCEM 2026, Summer Expedition, Land-to-Ocean"
+expedition      = "duccem-2026"
+colour          = "Blue ballpoint"
+colour_de       = "Blauer Kugelschreiber"
+shows           = "The expedition name and the words Summer Expedition and Land-to-Ocean, written across the upper left of the cover by hand."
+shows_de        = "Der Expeditionsname und die Worte Summer Expedition und Land-to-Ocean, von Hand oben links auf den Umschlag geschrieben."
+transcript_lang = "en"
+transcript      = """
+DUCCEM 2026
+Summer Expedition
+Land-to-Ocean
+"""
+translation_de  = """
+DUCCEM 2026, Sommerexpedition, vom Land ins Meer.
+"""
+
+
+[thinice-2026]
+name            = "ThinICE Expedition, August 2026"
+expedition      = "thinice-2026"
+colour          = "Blue ballpoint"
+colour_de       = "Blauer Kugelschreiber"
+shows           = "A handwritten note naming the expedition, the dates, the stretch between Inuvik and Tuktoyaktuk, and the work on drilling mud sumps."
+shows_de        = "Eine handschriftliche Notiz mit Expedition, Zeitraum, der Strecke zwischen Inuvik und Tuktoyaktuk und den Arbeiten an Bohrschlammgruben."
+transcript_lang = "de"
+transcript      = """
+ThinICE-Expedition
+August 2026 zwischen
+Inuvik & Tuktoyaktuk,
+Kanada – Arbeiten auf
+Bohrschlammgruben.
+"""
+translation     = """
+ThinICE expedition, August 2026, between Inuvik and Tuktoyaktuk, Canada.
+Work on drilling mud sumps.
+"""
+
+
+[coldspot-2026]
+name            = "COLDSPOT Kilpisjärvi 2026"
+expedition      = "coldspot-2026"
+colour          = "Black ballpoint"
+colour_de       = "Schwarzer Kugelschreiber"
+shows           = "A handwritten heading and a short description of the greenhouse gas fieldwork, in German, across the upper left."
+shows_de        = "Eine handschriftliche Überschrift und eine kurze Beschreibung der Treibhausgasarbeit, auf Deutsch, oben links."
+transcript_lang = "de"
+transcript      = """
+COLDSPOT Kilpisjärvi 2026
+Feldarbeit zur Untersuchung
+des Treibhausgasaufkommens
+in verschiedenen arktischen
+Ökosystemen
+"""
+translation     = """
+COLDSPOT Kilpisjärvi 2026. Fieldwork investigating greenhouse gas release
+across a range of Arctic ecosystems.
+"""
+
+
+[forest-change-alaska-2026]
+name            = "Forest Change Alaska 2026"
+expedition      = "forest-change-alaska-2026"
+colour          = "Blue ballpoint"
+colour_de       = "Blauer Kugelschreiber"
+shows           = "A description of the work on 'drunken forests', handwritten in German across the left half of the cover."
+shows_de        = "Eine Beschreibung der Arbeit an ‚Drunken Forests‘, handschriftlich auf Deutsch über die linke Hälfte des Umschlags."
+transcript_lang = "de"
+transcript      = """
+Forest Change Alaska 2026:
+Untersuchung der Reaktion
+verschiedener Baumarten
+auf degradiertem Permafrost.
+Bäume sacken auf instabilen
+Böden ab und bilden
+„Drunken Forests". Die Intensität
+der Neigung sowie die physiologische
+Reaktion werden mittels Wald-
+inventuren untersucht.
+"""
+translation     = """
+Forest Change Alaska 2026: how different tree species respond to degrading
+permafrost. Trees sink into unstable ground and form "drunken forests". Forest
+inventories record both how far they lean and how they respond physiologically.
+"""
+
+
+[alaska-lakes-2026]
+name            = "Expedition Alaska Lakes 2026"
+expedition      = "alaska-lakes-2026"
+colour          = "Black ballpoint"
+colour_de       = "Schwarzer Kugelschreiber"
+shows           = "A handwritten heading naming the three lakes and the subject, biodiversity change."
+shows_de        = "Eine handschriftliche Überschrift mit den drei Seen und dem Thema, Biodiversitätswandel."
+transcript_lang = "en"
+transcript      = """
+Expedition Alaska Lakes 2026
+Lake Aleknagik, Canyon Lake,
+Arolik Lake
+Biodiversity Changes
+"""
+translation_de  = """
+Expedition Alaska-Seen 2026: Aleknagik-, Canyon- und Arolik-See.
+Wandel der Biodiversität.
+"""
+

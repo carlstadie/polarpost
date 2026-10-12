@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="6 18 108 84" width="240" height="240"><defs>
+  <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#DCE7F7" stop-opacity=".9"/>
+  </linearGradient>
+  <radialGradient id="ball" cx=".45" cy=".4" r=".65">
+    <stop offset="0" stop-color="#fff" stop-opacity=".6"/><stop offset=".8" stop-color="#DCE7F7" stop-opacity=".5"/>
+    <stop offset="1" stop-color="#DCE7F7" stop-opacity=".85"/>
+  </radialGradient>
+  <linearGradient id="spec" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="sh" x="-30%" y="-30%" width="160%" height="170%">
+    <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#0F2236" flood-opacity=".18"/>
+  </filter>
+</defs>
+  <g filter="url(#sh)"><rect x="12" y="26" width="96" height="68" rx="7" fill="url(#glass)" stroke="#1F3F8F" stroke-width="2.6"/></g>
+  <clipPath id="w4"><circle cx="60" cy="60" r="26"/></clipPath>
+  <circle cx="60" cy="60" r="26" fill="url(#ball)" stroke="#1F3F8F" stroke-width="2"/>
+  <g clip-path="url(#w4)"><circle cx="60" cy="60" r="8.58" fill="none" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><circle cx="60" cy="60" r="17.16" fill="none" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="86.00" y2="60.00" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="82.52" y2="73.00" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="73.00" y2="82.52" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="60.00" y2="86.00" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="47.00" y2="82.52" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="37.48" y2="73.00" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="34.00" y2="60.00" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="37.48" y2="47.00" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="47.00" y2="37.48" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="60.00" y2="34.00" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="73.00" y2="37.48" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><line x1="60" y1="60" x2="82.52" y2="47.00" stroke="#1F3F8F" stroke-width="1.1" stroke-opacity=".8"/><circle cx="60" cy="60" r="1.60" fill="#1F3F8F"/></g>
+  <path d="M15 30 L46 52 M105 30 L74 52" fill="none" stroke="#1F3F8F" stroke-width="2.4" stroke-linecap="round"/></svg>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Polarpost</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/cover.css">
+</head>
+<body>
+
+<!--
+  The globe fills the window; everything else floats over it on glass.
+  Text in this file is only a fallback: every element with data-i18n is filled
+  from i18n/ui.toml in the reader's language. Edit the words there, not here.
+-->
+
+<div class="stage" id="stage">
+  <canvas id="globe" tabindex="0" role="img" data-i18n-label="globe.label"></canvas>
+  <div class="tip glass" id="tip" role="status"></div>
+</div>
+
+<!-- The top bar, as on any website: who we are on the left, then the ways to
+     narrow the map — search, expedition, collection — and the language. -->
+<header class="topbar glass" id="topbar">
+  <a class="brand" href="./" id="brand">
+    <img class="logo" id="logo" alt="" hidden>
+    <span class="name" id="siteTitle">Polarpost</span>
+  </a>
+  <label class="search">
+    <span class="search-ic"></span>
+    <input type="search" id="q" autocomplete="off" spellcheck="false" enterkeyhint="search"
+           data-i18n-label="search.placeholder">
+    <button type="button" class="clear" id="qClear" data-i18n-label="search.clear" hidden></button>
+  </label>
+  <div class="filters">
+    <label class="menu"><select id="fExp" data-i18n-label="filters.expedition"></select><span class="chev"></span></label>
+    <label class="menu" id="fKindWrap"><select id="fKind" data-i18n-label="filters.kind"></select><span class="chev"></span></label>
+    <label class="menu" id="fColWrap"><select id="fCol" data-i18n-label="filters.collection"></select><span class="chev"></span></label>
+  </div>
+  <button class="toplink" id="sendLink" type="button" hidden></button>
+  <div class="seg seg-sm" id="langSeg" role="group" data-i18n-label="lang.label"></div>
+</header>
+
+<!-- What the globe and the lists are showing, whenever it is not everything:
+     "3 of 8 covers · Signed by Carl Stadie × · 2026 ×   Show all". -->
+<div class="scope" id="scope" hidden>
+  <div class="scope-bar glass" role="status" aria-live="polite"></div>
+</div>
+
+<!-- The catalogue, on the right. One screen at a time with a back button, as
+     in an iOS list: the overview, a list of expeditions, stamps or people, one
+     letter, or everything at one place. -->
+<aside class="panel glass" id="panel">
+  <nav class="navbar" id="navbar" hidden>
+    <button class="navback" id="navBack" type="button"></button>
+    <span class="navtitle" id="navTitle" aria-hidden="true"></span>
+  </nav>
+  <div class="views-host" id="screens" aria-live="polite"></div>
+</aside>
+
+<!-- Along the bottom: where to turn the globe, and when the letters were sent. -->
+<footer class="bottombar" id="bottombar">
+  <div class="mapcontrols">
+    <div class="seg views glass" role="group" data-i18n-label="views.label">
+      <button data-view="arctic" data-i18n="views.arctic">Arctic</button>
+      <button data-view="alaska" data-i18n="views.alaska">Alaska</button>
+      <button data-view="canada" data-i18n="views.mackenzie">Mackenzie</button>
+      <button data-view="europe" data-i18n="views.europe">Europe</button>
+    </div>
+    <button class="roundbtn glass" id="spin" type="button" aria-pressed="false"
+            data-i18n-label="views.spin" data-i18n-title="views.spin"></button>
+  </div>
+  <div class="timeline glass">
+    <div class="legend">
+      <span><i class="dot o"></i><span data-i18n="legend.posted"></span></span>
+      <span><i class="dot d"></i><span data-i18n="legend.home"></span></span>
+    </div>
+    <div class="bars-wrap">
+      <span class="lab" data-i18n="timeline.label"></span>
+      <div class="years" id="years"></div>
+    </div>
+    <button class="clearyear" id="clearYear" type="button" data-i18n="timeline.all" hidden></button>
+  </div>
+</footer>
+
+<!-- The detail view. A glass sheet over the globe; the cover stays whole in the
+     middle, and each mark gets a tag outside it. See assets/js/cover.js. -->
+<div class="detail" id="detail" hidden>
+  <div class="detail-sheet glass" role="dialog" aria-modal="false" aria-labelledby="detailTitle">
+    <header class="detail-bar">
+      <!-- A small globe showing this letter's route, so the journey stays in
+           view while the big globe is behind the sheet. Wide screens only. -->
+      <div class="minimap" id="minimap" aria-hidden="true">
+        <canvas id="miniGlobe"></canvas>
+        <div class="minitip" id="miniTip"></div>
+      </div>
+      <div class="detail-id">
+        <h2 id="detailTitle"></h2>
+        <p class="meta" id="detailMeta"></p>
+      </div>
+      <div class="detail-actions">
+        <button id="detailPrev" class="round" data-i18n-label="nav.prev" data-i18n-title="nav.prev">&#8249;</button>
+        <button id="detailNext" class="round" data-i18n-label="nav.next" data-i18n-title="nav.next">&#8250;</button>
+        <button id="detailClose" class="round close" data-i18n-label="detail.close" data-i18n-title="detail.close">&#215;</button>
+      </div>
+    </header>
+    <div class="detail-stage" id="detailStage">
+      <svg class="leaders" id="leaders" aria-hidden="true"></svg>
+      <figure class="detail-cover" id="detailCover">
+        <img id="detailImg" alt="">
+        <div class="ring" id="ring" hidden></div>
+        <div class="hotspots" id="detailHotspots"></div>
+      </figure>
+      <div class="tags" id="tagsLeft"></div>
+      <div class="tags" id="tagsRight"></div>
+    </div>
+    <p class="detail-hint" data-i18n="detail.hint"></p>
+  </div>
+</div>
+
+<div class="toast glass" id="toast" role="status" aria-live="polite"></div>
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

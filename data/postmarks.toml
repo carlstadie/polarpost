@@ -1,0 +1,57 @@
+# Postmarks: marks applied by a postal administration.
+#
+#   office    the office or machine as the mark names it
+#   operator  Canada Post, USPS, Posti, Deutsche Post …
+#   place     key from places.toml, when the mark names a place
+#   form      circular | pictorial | machine | meter
+#   reads     the text on the mark, as struck (never translated)
+#   about     one or two sentences of context
+#   verify    true while anything here is still unchecked
+#
+# A date belongs on the letter, not here: the same handstamp is used for years,
+# so each letter supplies its own `date` on the mark.
+
+[tuktoyaktuk-po]
+office   = "Tuktoyaktuk PO 102753"
+operator = "Canada Post"
+place    = "tuktoyaktuk"
+form     = "circular"
+reads    = "TUKTOYAKTUK PO 102753 · X0E 1C0"
+about    = "The counter handstamp of Canada's northernmost road-accessible post office. X0E 1C0 is the postal code; on these covers the strike landed upside down, which is ordinary for a busy counter."
+about_de = "Der Schalterstempel des nördlichsten auf der Straße erreichbaren Postamts Kanadas. X0E 1C0 ist die Postleitzahl; auf diesen Umschlägen steht der Abschlag auf dem Kopf, was an einem vollen Schalter normal ist."
+
+[inuvik-nt-pictorial]
+office   = "Inuvik NT"
+operator = "Canada Post"
+place    = "inuvik"
+form     = "pictorial"
+reads    = "CANADA POST · POSTES CANADA · INUVIK NT"
+about    = "A pictorial cancel showing a polar bear below an aurora, with snowflakes either side. Pictorial cancels are applied on request and are the ones collectors ask for by name."
+about_de = "Ein Bildstempel mit einem Eisbären unter Polarlicht, Schneeflocken zu beiden Seiten. Bildstempel werden auf Wunsch abgeschlagen und sind die, nach denen Sammler gezielt fragen."
+
+[oulu-posti]
+office   = "Oulu / Uleåborg"
+operator = "Posti"
+place    = "oulu"
+form     = "circular"
+reads    = "OULU ULEÅBORG · POSTI"
+about    = "Finland's marks carry both the Finnish and the Swedish name of the town. Mail from the Kilpisjärvi station travels south to Oulu before it is cancelled."
+about_de = "Finnische Stempel tragen den finnischen und den schwedischen Ortsnamen. Post von der Station Kilpisjärvi reist nach Süden bis Oulu, bevor sie abgestempelt wird."
+
+[kotzebue-ak]
+office   = "Kotzebue, AK 99752"
+operator = "United States Postal Service"
+place    = "kotzebue"
+form     = "circular"
+reads    = "KOTZEBUE, AK 99752 · USPS"
+about    = "A magenta counter handstamp. The ring is struck twice on this cover, once over each stamp, which is standard USPS practice for hand cancellation."
+about_de = "Ein magentafarbener Schalterstempel. Der Ring ist auf diesem Umschlag zweimal abgeschlagen, einmal über jeder Marke, wie es bei Handentwertungen der USPS üblich ist."
+
+[alaskan-frontier-fairbanks]
+office   = "Alaskan Frontier Station, Fairbanks"
+operator = "United States Postal Service"
+place    = "fairbanks"
+form     = "machine"
+reads    = "ALASKAN FRONTIER STATION FAIRBANKS"
+about    = "A branch station in Fairbanks. The straight-line machine cancel with the date is applied by the sorting equipment, and the wavy bars across the foot of the cover come from the same machine."
+about_de = "Eine Zweigstelle in Fairbanks. Der Maschinenstempel mit Datum stammt von der Sortieranlage, die Wellenlinien am unteren Rand von derselben Maschine."

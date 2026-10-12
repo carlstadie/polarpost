@@ -1,0 +1,99 @@
+# Places: post offices, field sites and collectors' towns.
+#
+# Every letter points at a place by its key instead of repeating coordinates,
+# so a position is corrected in one spot and every letter follows.
+#
+#   name       shown in the interface (name_de only where German differs)
+#   kind       office | site | town
+#   lat/lon    decimal degrees, north and east positive
+#   country    optional
+#   about      one or two sentences, shown when the place is followed
+#
+# Translations: any text field can have a _de sibling directly beneath it.
+# A missing one falls back to English and is listed by the build.
+
+[tuktoyaktuk]
+name     = "Tuktoyaktuk, Northwest Territories"
+name_de  = "Tuktoyaktuk, Nordwest-Territorien"
+kind     = "office"
+lat      = 69.445
+lon      = -133.034
+about    = "Hamlet on the Beaufort Sea coast, the northern end of the Dempster Highway and the usual mailing point for fieldwork on the outer Mackenzie Delta."
+about_de = "Siedlung an der Beaufortsee, nördliches Ende des Dempster Highway und die übliche Poststelle für Feldarbeit im äußeren Mackenzie-Delta."
+
+[inuvik]
+name     = "Inuvik, Northwest Territories"
+name_de  = "Inuvik, Nordwest-Territorien"
+kind     = "office"
+lat      = 68.361
+lon      = -133.730
+about    = "Logistics hub for the western Canadian Arctic; most Mackenzie Delta campaigns stage through its airport."
+about_de = "Logistikzentrum der westkanadischen Arktis; die meisten Kampagnen im Mackenzie-Delta starten über den Flughafen."
+
+[oulu]
+name     = "Oulu, Finland"
+name_de  = "Oulu, Finnland"
+kind     = "office"
+lat      = 65.012
+lon      = 25.471
+about    = "Sorting centre for northern Finland. Mail from Kilpisjärvi is cancelled here rather than at the station."
+about_de = "Briefzentrum für Nordfinnland. Post aus Kilpisjärvi wird hier abgestempelt, nicht an der Station."
+
+[kilpisjarvi]
+name     = "Kilpisjärvi"
+kind     = "site"
+lat      = 69.047
+lon      = 20.795
+about    = "Biological station in Finland's north-western arm, in the birch forest and fell tundra transition."
+about_de = "Biologische Station im nordwestlichen Zipfel Finnlands, am Übergang von Birkenwald zu Fjelltundra."
+
+[kotzebue]
+name     = "Kotzebue, Alaska"
+kind     = "office"
+lat      = 66.897
+lon      = -162.596
+about    = "Community on the Baldwin Peninsula above the Arctic Circle, a base for work around Kotzebue Sound."
+about_de = "Ort auf der Baldwin-Halbinsel nördlich des Polarkreises, Ausgangspunkt für Arbeiten am Kotzebue-Sund."
+
+[fairbanks]
+name     = "Fairbanks, Alaska"
+kind     = "office"
+lat      = 64.838
+lon      = -147.716
+about    = "Interior Alaska, in discontinuous permafrost. The surrounding black spruce stands are the classic place to see tilted 'drunken' forest."
+about_de = "Inneres Alaska, im diskontinuierlichen Permafrost. Die Schwarzfichtenbestände ringsum sind der klassische Ort für schief stehenden ‚betrunkenen‘ Wald."
+
+[aleknagik]
+name     = "Lake Aleknagik, Alaska"
+name_de  = "Aleknagik-See, Alaska"
+kind     = "site"
+lat      = 59.274
+lon      = -158.618
+about    = "The lowest lake of the Wood River chain in Bristol Bay, south-west Alaska."
+about_de = "Der unterste See der Wood-River-Seenkette in der Bristol Bay im Südwesten Alaskas."
+
+[unalakleet]
+name     = "Unalakleet, Alaska"
+kind     = "site"
+lat      = 63.873
+lon      = -160.789
+about    = "Village on the Norton Sound coast where the driftwood transects of the Perma-X ground campaign begin."
+about_de = "Dorf an der Küste des Norton-Sunds, wo die Treibholz-Transekte der Perma-X-Bodenkampagne beginnen."
+
+[qikiqtaruk]
+name     = "Qikiqtaruk (Herschel Island)"
+kind     = "site"
+lat      = 69.571
+lon      = -138.911
+about    = "Territorial park island off the Yukon coast, one of the fastest-eroding permafrost coastlines in the Arctic."
+about_de = "Insel-Territorialpark vor der Küste des Yukon, eine der am schnellsten erodierenden Permafrostküsten der Arktis."
+
+[potsdam]
+name       = "Potsdam"
+kind       = "town"
+country    = "Germany"
+country_de = "Deutschland"
+lat        = 52.400
+lon        = 13.066
+about      = "Where this collection is kept."
+about_de   = "Hier wird diese Sammlung aufbewahrt."

@@ -1,0 +1,31 @@
+# Cachets: the expedition's own logo, as a printed label or a rubber stamp.
+# Writing by hand on the cover is not a cachet: it is a field note and lives
+# in fieldnotes.toml. An expedition can have several cachets (a new design, a
+# second stamp); give each its own entry and point the letters at the right one.
+#
+#   name            what the mark says, or what it is called
+#   expedition      key from expeditions.toml
+#   form            label | handstamp
+#   colour          ink or print description
+#   shows           what is depicted, in one or two sentences
+#   image           optional file in refs/; otherwise the build crops the scan
+#   verify          true while anything here is still unchecked
+
+[yukon-coast-2026]
+name       = "Expedition Yukon Coast 2026"
+expedition = "yukon-coast-2026"
+form       = "label"
+colour     = "Full colour, printed"
+colour_de  = "Vollfarbig, gedruckt"
+shows      = "The logo shows a sketch of the sand spit on Hershel Island, home to the HErshel Island Research Station, in a double ring. The expedition name is above, the place names Qikiqtaruk and Tuktoyaktuk on the sides, the year below, and a maple leaf on each side."
+shows_de   = "Das Logo zeigt eine Skizze der Sandbank auf Herschel Island, Heimat der Herschel Island Research Station, in einem Doppelring. Der Expeditionsname steht oben, die Ortsnamen Qikiqtaruk und Tuktoyaktuk an den Seiten, das Jahr unten und ein Ahornblatt auf jeder Seite."
+
+
+[permax-ground-alaska-2026]
+name       = "Perma-X Ground Alaska 2026"
+expedition = "permax-ground-alaska-2026"
+form       = "label"
+colour     = "Navy and yellow, printed"
+colour_de  = "Marineblau und Gelb, gedruckt"
+shows      = "A silhouette map of Alaska in navy, with yellow figures surveying a driftwood log, a survey aircraft over the north coast, and a star marking the interior. The ring carries the expedition name above and the three field sites, Unalakleet, Kotzebue and Fairbanks, below. The field sites are also marked on the map with yellow stars resembeling the Flag of Alaska."
+shows_de   = "Eine Silhouette von Alaska in Marineblau, mit gelben Figuren, die ein Treibholzprotokoll untersuchen, einem Vermessungsflugzeug über der Nordküste und einem Stern, der das Inland markiert. Der Ring trägt den Expeditionsnamen oben und die drei Feldstandorte Unalakleet, Kotzebue und Fairbanks unten. Die Feldstandorte sind auch auf der Karte mit gelben Sternen markiert, die der Flagge von Alaska ähneln."

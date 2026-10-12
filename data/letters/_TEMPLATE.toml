@@ -1,0 +1,85 @@
+# Copy this file, rename it, fill it in. The file name becomes the letter's URL.
+#
+# ─── the record ──────────────────────────────────────────────────────────────
+id         = "L0000"                  # stable, never reused
+expedition = "yukon-coast-2026"       # key from ../expeditions.toml
+kind       = "signed"                 # signed | description | flight — see below
+collector  = "wr"                     # key from ../collectors.toml
+posted_at  = "tuktoyaktuk"            # key from ../places.toml — where it entered the post
+posted_on  = 2026-09-01               # plain date, no quotes
+cover      = "name-of-file.jpg"       # file in ../../covers/
+year       = 2026                     # shown on the timeline; usually posted_on's year
+
+# kind is what sort of cover this is. An expedition usually sends several:
+#
+#   signed       the expedition's cachet (logo), signed by the people in camp
+#   description  the team describes its work by hand on the cover — the
+#                writing goes in ../fieldnotes.toml as a field note
+#   flight       flown on a research flight; the printed list of date, aircraft,
+#                crew and airfields is a mark: ref = "flight:<key>", with the
+#                flight itself in ../flights.toml
+#
+# The kinds, their names and icons are set in [kinds] in config.toml.
+
+note = """
+Free prose, shown under the cover on the letter's page. Two or three sentences.
+Leave it out entirely if you have nothing to say yet.
+"""
+# The same in German, directly beneath. Leave it out and the English is shown;
+# the build lists every note still waiting for its translation.
+note_de = """
+Freier Text, unter dem Umschlag angezeigt. Zwei oder drei Sätze.
+"""
+
+# ─── what is on the cover ────────────────────────────────────────────────────
+#
+# One [[marks]] block per thing a visitor can click. Order them the way the eye
+# travels, top-left to bottom-right: that order becomes the numbering.
+#
+#   ref   "<kind>:<key>", where kind is cachet, fieldnote, flight, stamp,
+#         postmark, collector or place, and key is an entry in the matching
+#         file in ../ (fieldnote -> fieldnotes.toml, flight -> flights.toml …).
+#         The bare word "signatures" is also allowed and needs no catalogue entry.
+#
+#   box   [x, y, width, height] as fractions of the image, origin top-left.
+#         [0.5, 0, 0.5, 0.5] is the top-right quarter.
+#         Run `python3 build.py --boxes` to get a labelled contact sheet that
+#         shows every box drawn on its cover, so you can nudge the numbers.
+#
+#   people  signatures only: keys from ../people.toml for the names you can read.
+#
+#   note  optional, specific to THIS cover. The catalogue says what the mark is;
+#         the note says what it is doing here.
+#
+#   date  optional, for postmarks: the date in this particular strike.
+
+[[marks]]
+ref = "cachet:yukon-coast-2026"
+box = [0.07, 0.02, 0.37, 0.54]
+
+[[marks]]
+ref  = "stamp:ca-inuit-hunting-12c"
+box  = [0.53, 0.02, 0.26, 0.29]
+note    = "Cancelled by the machine bars rather than the counter handstamp."
+note_de = "Durch die Maschinenstriche entwertet, nicht durch den Schalterstempel."
+
+[[marks]]
+ref  = "postmark:tuktoyaktuk-po"
+box  = [0.46, 0.35, 0.34, 0.26]
+date = 2026-09-01
+
+[[marks]]
+ref   = "signatures"
+box   = [0.05, 0.54, 0.40, 0.27]
+people = ["carl-stadie"]                 # keys from ../people.toml
+note  = "Signed by the field party before the cover went into the post."
+
+[[marks]]
+ref = "collector:wr"
+box = [0.58, 0.67, 0.42, 0.29]
+
+# On a flight cover, the printed flight list is one more mark:
+#
+# [[marks]]
+# ref = "flight:polar6-2026-07-14"
+# box = [0.05, 0.45, 0.42, 0.40]

@@ -1,0 +1,81 @@
+# The "Send us a cover" page: how a collector gets covers onto an expedition.
+#
+# Everything a visitor reads on that page is in this file, English and German
+# side by side. Reword freely; the build checks every English text has its
+# German sibling (`_de`). Steps appear in the order written here.
+#
+# This is a first draft. Check the steps against how you actually handle covers
+# (luggage limits, stamps, return times) before publishing.
+
+# The address the "Write to us" button opens a new email to. Leave it empty and
+# the page shows the steps without a button; the build reminds you.
+email = ""
+
+title    = "Add your collection to Polarpost"
+title_de = "Sammlung zu Polarpost hinzufügen"
+
+intro    = """
+We welcome collections of polar mail to add to Polarpost. If you have letters,
+folders or other material connected to an expedition, we are happy to consider
+it for the archive and for publication here."""
+intro_de = """
+Wir freuen uns über Sammlungen von Polarpost, die wir zu Polarpost hinzufügen
+können. Wenn Sie Briefe, Mappen oder anderes Material besitzen, das mit einer
+Expedition zusammenhängt, prüfen wir es gern für das Archiv und für die
+Veröffentlichung hier."""
+
+# The email the button starts. The visitor fills in the blanks.
+subject    = "Polarpost: collection for the archive"
+subject_de = "Polarpost: Sammlung für das Archiv"
+body    = """
+Hello Polarpost team,
+
+I would like to offer a collection for Polarpost.
+
+Name:
+Number of letters or items:
+Expedition or season, if known:
+May my name appear on the site, or initials only?
+
+Thank you!"""
+body_de = """
+Hallo Polarpost-Team,
+
+ich möchte eine Sammlung für Polarpost anbieten.
+
+Name:
+Anzahl der Briefe oder Objekte:
+Expedition oder Saison, falls bekannt:
+Darf mein Name auf der Seite erscheinen, oder nur Initialen?
+
+Vielen Dank!"""
+
+[[step]]
+title    = "Write to us first"
+title_de = "Schreiben Sie uns zuerst"
+text     = "Tell us what you have: how many letters or items you would like to contribute, and whether you know the expedition, season or period. We are always happy to look at existing collections rather than organise new letters for the field."
+text_de  = "Schreiben Sie uns, was Sie haben: Wie viele Briefe oder Objekte Sie beisteuern möchten und ob Sie Expedition, Saison oder Zeitraum kennen. Wir prüfen bestehende Sammlungen gern, statt neue Briefe für das Feld zu organisieren."
+
+[[step]]
+title    = "Prepare the material"
+title_de = "Material vorbereiten"
+text     = "Keep letters together in an orderly set, and include any notes, envelopes or labels that help place them in context. If anything is already grouped by expedition, season or collector, keep that structure intact."
+text_de  = "Halten Sie die Briefe in einer geordneten Sammlung zusammen und fügen Sie alle Notizen, Umschläge oder Etiketten bei, die den Zusammenhang verdeutlichen. Wenn etwas bereits nach Expedition, Saison oder Sammler gruppiert ist, behalten Sie diese Struktur bei."
+
+[[step]]
+title    = "Send it to us"
+title_de = "Schicken Sie es uns"
+text     = "Post the material together in one larger envelope to the address we give you by email, and let us know if there are any items you would particularly like to highlight."
+text_de  = "Schicken Sie das Material zusammen in einem größeren Umschlag an die Adresse, die wir Ihnen per E-Mail nennen, und teilen Sie uns mit, ob es besondere Stücke gibt, die Sie hervorheben möchten."
+
+[[step]]
+title    = "We review and add it"
+title_de = "Wir prüfen und ergänzen es"
+text     = "Once we have received the collection, we review it for the archive and decide how best to add it here. If it fits, it becomes part of the growing record of polar mail on this site."
+text_de  = "Nachdem wir die Sammlung erhalten haben, prüfen wir sie für das Archiv und entscheiden, wie sie hier am besten ergänzt werden kann. Wenn sie passt, wird sie Teil des wachsenden Bestands an Polarpost auf dieser Seite."
+
+[privacy]
+title    = "Your address and your name"
+title_de = "Ihre Adresse und Ihr Name"
+text     = "When a letter comes back and appears on this site, your address is blurred on the scan and stored nowhere. Your name is shown only as initials unless you tell us otherwise."
+text_de  = "Wenn ein Brief zurückkommt und hier erscheint, ist Ihre Adresse auf dem Scan unkenntlich gemacht und wird nirgends gespeichert. Ihr Name erscheint nur als Initialen, wenn Sie nichts anderes sagen."

@@ -1,0 +1,49 @@
+id         = "L0007"
+expedition = "thinice-2026"
+kind       = "description"
+collector  = "wr"
+posted_at  = "tuktoyaktuk"
+posted_on  = 2026-09-01
+year       = 2026
+cover      = "2026-thinice-tuktoyaktuk.jpg"
+
+note = """
+The most heavily signed cover here: more than a dozen hands, in blue and black,
+filling the lower left. The note at the top places the work on the drilling mud
+sumps between Inuvik and Tuktoyaktuk.
+"""
+note_de = """
+Der am dichtesten unterschriebene Umschlag hier: mehr als ein Dutzend Hände in
+Blau und Schwarz füllen die untere linke Hälfte. Die Notiz oben verortet die
+Arbeit an den Bohrschlammgruben zwischen Inuvik und Tuktoyaktuk.
+"""
+
+[[marks]]
+ref = "fieldnote:thinice-2026"
+box = [0.021, 0.030, 0.427, 0.366]
+
+[[marks]]
+ref = "stamp:ca-arctic-landscape-365"
+box = [0.539, 0.099, 0.168, 0.198]
+
+[[marks]]
+ref  = "stamp:ca-inuit-community-17c"
+box  = [0.717, 0.020, 0.249, 0.267]
+note = "Drum dancers, posted from one of the communities whose drum dance the stamp depicts."
+note_de = "Trommeltänzer, abgeschickt aus einer der Gemeinden, deren Trommeltanz die Marke zeigt."
+
+[[marks]]
+ref  = "postmark:tuktoyaktuk-po"
+box  = [0.399, 0.247, 0.385, 0.326]
+date = 2026-09-01
+
+[[marks]]
+ref   = "signatures"
+box   = [0.021, 0.445, 0.511, 0.504]
+people = ["pauline-walt", "mara"]
+note  = "Fourteen or more signatures. One other gives the first name Mara. Readings not yet confirmed."
+note_de = "Vierzehn oder mehr Unterschriften; eine weitere nennt den Vornamen Mara. Lesungen nicht bestätigt."
+
+[[marks]]
+ref = "collector:wr"
+box = [0.605, 0.656, 0.395, 0.273]

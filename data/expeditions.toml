@@ -1,0 +1,105 @@
+# Expeditions.
+#
+# One entry per campaign. Letters reference it with `expedition = "<key>"`,
+# and a cachet in cachets.toml points back here with `expedition = "<key>"`.
+#
+#   name      full name as the team writes it (name_de only if it differs)
+#   operator  institute or consortium
+#   season    when it ran, in words
+#   region    where, in words
+#   topic     one or two sentences on the science
+#   sites     keys from places.toml
+#   link      optional project page
+#   verify    true while anything here is still unchecked
+
+[yukon-coast-2026]
+name        = "Expedition Yukon Coast 2026"
+operator    = "Alfred Wegener Institute"
+operator_de = "Alfred-Wegener-Institut"
+season      = "Summer 2026"
+season_de   = "Sommer 2026"
+region      = "Hershel Island and Tuktoyaktuk, Northwest Territories, Canada"
+region_de   = "Herschel Island und Tuktoyaktuk, Nordwest-Territorien, Kanada"
+topic       = "Coastal permafrost erosion on Herchel Island and the coastal hamlet of Tuktoyaktuk, Northwest Territories, Canada."
+topic_de    = "Küstenerosion von Permafrost auf der Herschel-Insel und in der Küstensiedlung Tuktoyaktuk, Nordwest-Territorien, Kanada."
+sites       = ["qikiqtaruk", "tuktoyaktuk", "inuvik"]
+#verify      = true
+
+[coldspot-2026]
+name        = "COLDSPOT Kilpisjärvi 2026"
+operator    = "Alfred Wegener Institute"
+operator_de = "Alfred-Wegener-Institut"
+season      = "Summer 2026"
+season_de   = "Sommer 2026"
+region      = "Kilpisjärvi, north-western Finland"
+region_de   = "Kilpisjärvi, Nordwestfinnland"
+topic       = "Field measurements of greenhouse gas release across contrasting Arctic ecosystems."
+topic_de    = "Feldmessungen der Treibhausgasfreisetzung in unterschiedlichen arktischen Ökosystemen."
+sites       = ["kilpisjarvi"]
+#verify      = true
+
+[permax-ground-alaska-2026]
+name        = "Perma-X Ground Alaska 2026"
+operator    = "Alfred Wegener Institute, Permafrost Research Section"
+operator_de = "Alfred-Wegener-Institut, Sektion Permafrostforschung"
+season      = "Summer 2026"
+season_de   = "Sommer 2026"
+region      = "Unalakleet, Kotzebue and Fairbanks, Alaska"
+region_de   = "Unalakleet, Kotzebue und Fairbanks, Alaska"
+topic       = "Ground survey of Arctic driftwood deposits and ice rich permafrost: transect sampling, stem discs and drone photogrammetry, to calibrate the carbon estimates made from satellite imagery."
+topic_de    = "Bodenerkundung arktischer Treibholzablagerungen und eisreicher Permafrost: Transektbeprobung, Stammscheiben und Drohnen-Photogrammetrie zur Kalibrierung der Kohlenstoffschätzungen aus Satellitenbildern."
+sites       = ["unalakleet", "kotzebue", "fairbanks"]
+
+[forest-change-alaska-2026]
+name        = "Forest Change Alaska 2026"
+operator    = "Alfred Wegener Institute"
+operator_de = "Alfred-Wegener-Institut"
+season      = "Summer 2026"
+season_de   = "Sommer 2026"
+region      = "Interior Alaska, around Fairbanks"
+region_de   = "Inneres Alaska, rund um Fairbanks"
+topic       = "How different tree species respond to degrading permafrost. Trees sink into unstable ground and form 'drunken forests'; forest inventories record both the lean and the physiological response."
+topic_de    = "Wie verschiedene Baumarten auf degradierenden Permafrost reagieren. Bäume sacken in instabilen Boden ab und bilden ‚Drunken Forests‘; Waldinventuren erfassen Neigung und physiologische Reaktion."
+sites       = ["fairbanks"]
+#verify      = true
+
+[duccem-2026]
+name        = "DUCCEM 2026 Summer Expedition"
+name_de     = "DUCCEM 2026 Sommerexpedition"
+operator    = "Alfred Wegener Institute"
+operator_de = "Alfred-Wegener-Institut"
+season      = "Summer 2026"
+season_de   = "Sommer 2026"
+region      = "Mackenzie Delta, Canada"
+region_de   = "Mackenzie-Delta, Kanada"
+topic       = "Land-to-ocean transfer of carbon across the delta and out onto the shelf."
+topic_de    = "Kohlenstofftransfer vom Land ins Meer, quer durch das Delta bis auf den Schelf."
+sites       = ["tuktoyaktuk"]
+#verify      = true
+
+[thinice-2026]
+name        = "ThinICE Expedition 2026"
+name_de     = "ThinICE-Expedition 2026"
+operator    = "Alfred Wegener Institute"
+operator_de = "Alfred-Wegener-Institut"
+season      = "Summer 2026"
+season_de   = "Sommer 2026"
+region      = "Between Inuvik and Tuktoyaktuk, Northwest Territories"
+region_de   = "Zwischen Inuvik und Tuktoyaktuk, Nordwest-Territorien"
+topic       = "Work on abandoned drilling mud sumps, where buried waste interacts with thawing permafrost."
+topic_de    = "Arbeiten an aufgelassenen Bohrschlammgruben, in denen vergrabene Abfälle mit tauendem Permafrost wechselwirken."
+sites       = ["inuvik", "tuktoyaktuk"]
+#verify      = true
+
+[alaska-lakes-2026]
+name        = "Expedition Alaska Lakes 2026"
+operator    = "Alfred Wegener Institute"
+operator_de = "Alfred-Wegener-Institut"
+season      = "Summer 2026"
+season_de   = "Sommer 2026"
+region      = "Wood River lakes and Bristol Bay, south-west Alaska"
+region_de   = "Wood-River-Seen und Bristol Bay, Südwestalaska"
+topic       = "Biodiversity change in Lake Aleknagik, Canyon Lake and Arolik Lake."
+topic_de    = "Biodiversitätswandel im Aleknagik-, Canyon- und Arolik-See."
+sites       = ["aleknagik"]
+#verify      = true

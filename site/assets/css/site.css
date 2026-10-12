@@ -1,0 +1,464 @@
+/* The shell: a website laid over a full-window globe. A bar across the top
+   (name, search, filters, language), the catalogue on the right, the views and
+   the timeline along the bottom — each a sheet of glass, with lists, fields and
+   buttons in the manner of iOS. Colours and faces come from tokens.css (written by build.py from
+   config.toml); no hex value and no font name belongs in this file.
+
+   Where the panels sit, how wide the letter panel is, the spacing, the corner
+   rounding and the glass are set in [layout] and [glass] in config.toml, which
+   build.py turns into --gap, --side-w, --radius, --glass-blur and a few
+   overrides in tokens.css. app.js measures the bars and writes --top/--bottom
+   (the space above and below the globe) and --bar-top/--bar-bottom (above and
+   below the letter panel), and keeps the globe centred in the space left free. */
+:root {
+  --top: 84px;
+  --bottom: 96px;
+  --bar-top: 84px;
+  --bar-bottom: 14px;
+  --radius-cell: 12px;       /* grouped lists, tiles, fields */
+  --spring: cubic-bezier(.32, .72, 0, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box }
+html, body { margin: 0; height: 100% }
+body {
+  background: radial-gradient(120% 90% at 60% 35%, var(--bg1), var(--bg2));
+  color: var(--ink);
+  font-family: var(--ui);
+  font-size: var(--base-size);
+  line-height: var(--line-height);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+}
+button, select, input { font: inherit; color: inherit }
+:focus-visible { outline: 2px solid var(--cachet); outline-offset: 2px }
+.icon { width: 1em; height: 1em; flex: 0 0 auto; vertical-align: -.12em }
+.num { font-variant-numeric: tabular-nums }
+
+/* ── glass ──────────────────────────────────────────────────────────────────
+   The blur-and-saturate of whatever is behind, a bright lip along the top edge
+   where light would catch it, a faint sheen from the top-left, and a shadow.
+   The sheen is a background layer so it can never sit on top of text. */
+.glass {
+  position: relative;
+  background:
+    linear-gradient(155deg, color-mix(in srgb, var(--glassspec) 34%, transparent) 0%, transparent 36%),
+    var(--glass);
+  -webkit-backdrop-filter: blur(var(--glass-blur, 26px)) saturate(1.8);
+  backdrop-filter: blur(var(--glass-blur, 26px)) saturate(1.8);
+  border: 1px solid var(--glassedge);
+  border-radius: var(--radius);
+  box-shadow:
+    inset 0 1px 0 var(--glassspec),
+    inset 0 -1px 0 color-mix(in srgb, var(--glassspec) 25%, transparent),
+    0 1px 2px var(--shade),
+    0 22px 50px -18px var(--shade);
+}
+
+/* ── the globe ──────────────────────────────────────────────────────────── */
+.stage { position: fixed; inset: 0 }
+canvas#globe { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none }
+canvas#globe.dragging { cursor: grabbing }
+.tip { position: absolute; pointer-events: none; z-index: 5; padding: .45rem .75rem;
+       font-size: .82rem; line-height: 1.35; max-width: 260px; border-radius: 14px;
+       opacity: 0; transition: opacity .14s }
+.tip .sub { color: var(--muted); font-size: .76rem }
+
+/* ── the top bar ────────────────────────────────────────────────────────── */
+.topbar { position: fixed; z-index: 12; top: var(--gap); left: var(--gap); right: var(--gap);
+          display: flex; align-items: center; gap: .9rem; padding: .5rem .6rem .5rem 1rem;
+          border-radius: 18px }
+.brand { display: flex; align-items: center; gap: .55rem; color: inherit; text-decoration: none;
+         flex: 0 0 auto }
+.brand .name { font-size: 1.12rem; font-weight: 700; letter-spacing: -.02em }
+.logo { height: 38px; width: auto; margin: -6px -2px -6px -6px }
+.logo[hidden] { display: none }
+.topbar .search { flex: 0 1 26rem; margin: 0 0 0 auto }
+.toplink { display: inline-flex; align-items: center; gap: .4rem; flex: 0 0 auto; height: 36px;
+           padding: 0 .85rem; border: 0; border-radius: 999px; cursor: pointer;
+           background: var(--fill); color: var(--cachet); font-size: .84rem; font-weight: 590 }
+.toplink[hidden] { display: none }
+.toplink:hover { background: var(--pressed) }
+.filters { display: flex; gap: .4rem; flex: 0 1 auto; min-width: 0 }
+.topbar .seg { flex: 0 0 auto }
+
+/* ── the scope bar ──────────────────────────────────────────────────────────
+   What the globe and the lists are showing, when it is not everything. It sits
+   at the top of the globe, between the top bar and the catalogue. */
+.scope { position: fixed; z-index: 9; top: var(--top); left: var(--gap);
+         right: calc(var(--side-w) + 2 * var(--gap));
+         display: flex; justify-content: center; pointer-events: none }
+.scope[hidden] { display: none }
+.scope-bar { pointer-events: auto; display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .5rem;
+             padding: .4rem .5rem .4rem .9rem; border-radius: 999px; max-width: 100%;
+             animation: scope-in .3s var(--spring) both }
+@keyframes scope-in { from { opacity: 0; transform: translateY(-6px) } to { opacity: 1; transform: none } }
+.scope .count { font-size: .82rem; font-weight: 600; margin-right: .2rem; white-space: nowrap }
+.chip { display: inline-flex; align-items: center; gap: .35rem; max-width: 22rem; border: 0; cursor: pointer;
+        padding: .26rem .5rem .26rem .7rem; border-radius: 999px; font-size: .78rem; font-weight: 590;
+        background: var(--cachet); color: var(--onaccent) }
+.chip span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.chip .icon { font-size: .68rem; opacity: .8 }
+.chip:hover .icon { opacity: 1 }
+.scope .link { font-size: .8rem; font-weight: 590; padding: 0 .4rem }
+
+/* ── the bottom bar ─────────────────────────────────────────────────────── */
+.bottombar { position: fixed; z-index: 10; left: var(--gap); bottom: var(--gap);
+             right: calc(var(--side-w) + 2 * var(--gap));
+             display: flex; align-items: flex-end; justify-content: space-between; gap: var(--gap);
+             pointer-events: none }
+.bottombar > * { pointer-events: auto }
+.mapcontrols { display: flex; align-items: center; gap: .5rem }
+.views { padding: 4px; border-radius: 999px }
+.roundbtn { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
+            cursor: pointer; font-size: 1rem; color: var(--ink); padding: 0 }
+.roundbtn[aria-pressed="true"] { color: var(--cachet) }
+
+.timeline { display: flex; align-items: flex-end; gap: 1.1rem; padding: .6rem .9rem .55rem;
+            border-radius: 18px }
+.bars-wrap { display: flex; flex-direction: column; gap: .25rem }
+.lab { font-size: .68rem; color: var(--muted); font-weight: 560 }
+.clearyear { border: 0; border-radius: 999px; background: var(--fill); color: var(--cachet);
+             padding: .26rem .7rem; font-size: .76rem; font-weight: 590; cursor: pointer;
+             align-self: center; white-space: nowrap }
+.clearyear[hidden] { display: none }
+
+/* Segmented control. */
+.seg { display: inline-flex; gap: 2px; padding: 2px; border-radius: 999px; background: var(--fill) }
+.seg.views { background: var(--glass) }
+.seg button { border: 0; background: none; border-radius: 999px; cursor: pointer;
+              padding: .34rem .85rem; font-size: .82rem; font-weight: 590; color: var(--ink);
+              opacity: .72; transition: background-color .2s var(--spring), opacity .2s }
+.seg button:hover { opacity: 1 }
+.seg button[aria-pressed="true"] { opacity: 1; background: var(--glassspec);
+                                   box-shadow: 0 1px 3px var(--shade), 0 0 0 .5px var(--line) }
+.seg-sm button { padding: .16rem .55rem; font-size: .72rem }
+
+/* ── the catalogue ──────────────────────────────────────────────────────── */
+.panel { position: fixed; z-index: 10; right: var(--gap); top: var(--bar-top); bottom: var(--bar-bottom);
+         width: var(--side-w); overflow-y: auto; overflow-x: hidden;
+         overscroll-behavior: contain; scrollbar-width: none }
+.panel::-webkit-scrollbar { display: none }
+
+/* Navigation bar, on every screen but the overview: a back button that names
+   where it goes, and the screen's title, which appears small in the middle once
+   the big one has scrolled under the bar — as on iOS. */
+.navbar[hidden] { display: none }
+.navbar { position: sticky; top: 0; z-index: 3; height: 50px;
+          display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: .4rem; align-items: center;
+          padding: 0 .8rem; transition: background-color .2s, box-shadow .2s }
+.navbar.collapsed { background: color-mix(in srgb, var(--bg1) 97%, transparent);
+                    -webkit-backdrop-filter: blur(20px) saturate(1.8); backdrop-filter: blur(20px) saturate(1.8);
+                    box-shadow: 0 .5px 0 var(--line) }
+.navback { justify-self: start; display: inline-flex; align-items: center; gap: .1rem; max-width: 100%;
+           border: 0; background: none; padding: .3rem .2rem; cursor: pointer;
+           color: var(--cachet); font-size: .95rem; font-weight: 450; white-space: nowrap; min-width: 0 }
+.navback .icon { font-size: 1.25rem; stroke-width: 2.4 }
+.navback span { overflow: hidden; text-overflow: ellipsis }
+.navtitle { font-size: .95rem; font-weight: 620; opacity: 0; transform: translateY(4px);
+            transition: opacity .2s, transform .2s var(--spring); white-space: nowrap;
+            overflow: hidden; text-overflow: ellipsis; max-width: 10rem }
+.navbar:not(.collapsed) .navtitle { max-width: 0 }
+.navbar.collapsed .navtitle { opacity: 1; transform: none }
+
+/* One screen of the catalogue. Pushing one in slides it from the right; going
+   back slides it from the left, as a navigation stack does. */
+.views-host { padding: 1.1rem 1rem 1.4rem }
+.navbar:not([hidden]) + .views-host { padding-top: 0 }
+.screen.push { animation: push .38s var(--spring) both }
+.screen.pop  { animation: pop .38s var(--spring) both }
+@keyframes push { from { opacity: 0; transform: translateX(32%) } to { opacity: 1; transform: none } }
+@keyframes pop  { from { opacity: 0; transform: translateX(-24%) } to { opacity: 1; transform: none } }
+
+.largetitle { display: flex; align-items: center; gap: .6rem; margin: .1rem .1rem .1rem }
+.largetitle h1, .largetitle h2 { font-size: var(--title-size); font-weight: 720; letter-spacing: .02em;
+                                 line-height: 1.08; margin: 0 }
+.largetitle h2 { font-size: 1.62rem; letter-spacing: .04em }
+.subtitle { margin: .46rem .1rem 0; color: var(--muted); font-size: .86rem; line-height: 1.4 }
+
+/* Search field. */
+.search { display: flex; align-items: center; gap: .45rem; margin: .9rem 0 0; padding: 0 .65rem;
+          height: 36px; min-width: 0; border-radius: var(--radius-cell); background: var(--fill); color: var(--muted) }
+.search input { flex: 1; min-width: 0; border: 0; background: none; outline: none; color: var(--ink);
+                font-size: .95rem }
+.search input::placeholder { color: var(--muted) }
+.search input::-webkit-search-cancel-button { display: none }
+.search .clear { border: 0; background: var(--muted); color: var(--glassspec); width: 17px; height: 17px;
+                 border-radius: 50%; display: grid; place-items: center; padding: 0; cursor: pointer;
+                 font-size: .6rem; opacity: .7 }
+.search .clear[hidden] { display: none }
+.search:focus-within { box-shadow: 0 0 0 2px color-mix(in srgb, var(--cachet) 45%, transparent) }
+
+/* The thread you are following: a token you can tap away. */
+.token { display: inline-flex; align-items: center; gap: .4rem; margin: 0 0 .7rem; max-width: 100%;
+         background: var(--cachet); color: var(--onaccent); border: 0; border-radius: 999px;
+         padding: .3rem .4rem .3rem .8rem; font-size: .8rem; font-weight: 590; cursor: pointer }
+.token .x { width: 1.15rem; height: 1.15rem; border-radius: 50%; display: grid; place-items: center;
+            background: color-mix(in srgb, var(--onaccent) 25%, transparent); font-size: .62rem }
+
+/* Tiles: the four things the site is about, each a door into its own list. */
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin: 1rem 0 0 }
+.tile { all: unset; box-sizing: border-box; cursor: pointer; display: grid;
+        grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: .55rem;
+        padding: .7rem .8rem .65rem; border-radius: var(--radius-cell); background: var(--cell);
+        transition: background-color .15s, transform .15s var(--spring) }
+.tile:active { transform: scale(.97); background: var(--pressed) }
+.tile:focus-visible { outline: 2px solid var(--cachet) }
+.tile .ic { grid-row: 1 / span 2; width: 30px; height: 30px; border-radius: 9px; display: grid;
+            place-items: center; color: var(--onaccent); background: var(--tone, var(--cachet)); font-size: 1rem }
+.tile b { font-size: 1.45rem; font-weight: 700; line-height: 1; letter-spacing: -.02em;
+          font-variant-numeric: tabular-nums }
+.tile small { color: var(--muted); font-size: .76rem; line-height: 1.3 }
+.tile.static { cursor: default }
+.tile.static:active { transform: none; background: var(--cell) }
+
+/* Grouped lists. */
+.group { margin: 1.35rem 0 0 }
+.group h3 { font-size: 1.02rem; font-weight: 680; letter-spacing: -.01em; margin: 0 .1rem .45rem }
+.rows { list-style: none; margin: 0; padding: 0; border-radius: var(--radius-cell);
+        background: var(--cell); overflow: hidden }
+.row { all: unset; box-sizing: border-box; position: relative; display: flex; align-items: center;
+       gap: .75rem; width: 100%; min-height: 50px; padding: .55rem .8rem; cursor: pointer }
+.rows li + li .row::before { content: ""; position: absolute; top: 0; right: 0; left: var(--inset, .8rem);
+                             border-top: .5px solid var(--line) }
+.row:active { background: var(--pressed) }
+.row:focus-visible { outline: 2px solid var(--cachet); outline-offset: -2px }
+.row.static { cursor: default }
+.row.static:active { background: none }
+.row .txt { flex: 1; min-width: 0 }
+.row .t { display: block; font-size: .92rem; font-weight: 540; line-height: 1.3;
+          overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.row .s { display: block; color: var(--muted); font-size: .78rem; line-height: 1.3;
+          overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.row .end { color: var(--muted); font-size: .84rem; white-space: nowrap; font-variant-numeric: tabular-nums }
+.row .chev { color: var(--muted); opacity: .55; font-size: .85rem }
+.row .k { color: var(--ink); font-size: .9rem; white-space: nowrap; flex: 0 0 auto }
+.row .v { margin-left: auto; color: var(--muted); font-size: .88rem; text-align: right;
+          font-variant-numeric: tabular-nums }
+.row .v small { display: block; font-size: .74rem }
+.row .v a { color: var(--cachet); text-decoration: none }
+
+/* Leading images in a row: a thumbnail, a numbered dot, or initials. */
+.thumb { width: 52px; height: 36px; border-radius: 5px; object-fit: cover; flex: 0 0 auto;
+         background: var(--scan); box-shadow: 0 0 0 .5px var(--line) }
+.thumb.square { width: 38px; height: 38px; object-fit: contain }
+.badge { width: 24px; height: 24px; border-radius: 50%; flex: 0 0 auto; display: grid; place-items: center;
+         font-size: .72rem; font-weight: 650; color: var(--onaccent); background: var(--spot, var(--cachet)) }
+.avatar { width: 34px; height: 34px; border-radius: 50%; flex: 0 0 auto; display: grid; place-items: center;
+          font-size: .78rem; font-weight: 620; color: var(--onaccent);
+          background: linear-gradient(160deg, var(--cachetsoft), var(--cachet)) }
+
+/* A round icon button, e.g. Share beside a letter's heading. */
+.iconbtn { flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; border: 0; cursor: pointer;
+           display: grid; place-items: center; padding: 0; font-size: 1.05rem;
+           background: var(--cell); color: var(--cachet) }
+.iconbtn:active { background: var(--pressed) }
+
+/* A section heading with a link on the right ("See all"). */
+.group-head { display: flex; align-items: baseline; justify-content: space-between; margin: 0 .1rem .45rem }
+.group-head h3 { margin: 0 }
+.link { border: 0; background: none; padding: 0; cursor: pointer; color: var(--cachet);
+        font-size: .88rem; font-weight: 450 }
+
+/* Cachets: a card each, the crop from the scan on paper-white. In a strip that
+   scrolls sideways on the overview, and in a grid in the gallery. */
+.cachet-card { all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column;
+               gap: .1rem; min-width: 0 }
+.cachet-card .pic { display: grid; place-items: center; aspect-ratio: 4 / 3; border-radius: var(--radius-cell);
+                    background: var(--scan); box-shadow: 0 0 0 .5px var(--line), 0 6px 16px -10px var(--shade);
+                    overflow: hidden; margin-bottom: .35rem; transition: transform .2s var(--spring) }
+.cachet-card .pic img { max-width: 88%; max-height: 84%; object-fit: contain; display: block }
+.cachet-card:active .pic { transform: scale(.97) }
+.cachet-card:focus-visible .pic { outline: 2px solid var(--cachet); outline-offset: 2px }
+.cachet-card .t { font-size: .82rem; font-weight: 560; line-height: 1.25;
+                  overflow: hidden; text-overflow: ellipsis; display: -webkit-box;
+                  -webkit-line-clamp: 2; -webkit-box-orient: vertical }
+.cachet-card .s { font-size: .72rem; color: var(--muted) }
+.strip { display: grid; grid-auto-flow: column; grid-auto-columns: 132px; gap: .7rem;
+         overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+         margin: 0 -1rem; padding: .1rem 1rem .3rem; scroll-padding: 0 1rem }
+.strip::-webkit-scrollbar { display: none }
+.strip .cachet-card { scroll-snap-align: start }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem .8rem }
+
+/* A wide filled button, e.g. Write to us. */
+.bigbutton { display: flex; align-items: center; justify-content: center; gap: .5rem; margin: 1rem 0 0;
+             height: 46px; border-radius: var(--radius-cell); background: var(--cachet); color: var(--onaccent);
+             font-weight: 600; font-size: .95rem; text-decoration: none }
+.bigbutton .icon { font-size: 1.1rem }
+.bigbutton:active { opacity: .85 }
+
+/* Rows that hold a sentence or two rather than a name. */
+.row .t.wrap { white-space: normal }
+.row .p { display: block; color: var(--muted); font-size: .84rem; line-height: 1.45; margin-top: .15rem }
+.steps { padding: 0 }
+.steps .row { align-items: flex-start; padding-top: .75rem; padding-bottom: .75rem }
+.steps .badge { margin-top: .05rem }
+.badge .icon { font-size: .8rem }
+.badge.soft { background: var(--fill); color: var(--cachet) }
+.badge.soft .icon { font-size: .9rem }
+
+/* The kind of a cover: a small icon in lists, a chip above a letter's heading. */
+.row .s .ki { display: inline-flex; vertical-align: -.1em; margin-right: .3rem; color: var(--cachet); opacity: .8 }
+.kindchip { display: inline-flex; align-items: center; gap: .3rem; margin-bottom: .3rem;
+            font-size: .74rem; font-weight: 600; color: var(--cachet); letter-spacing: .01em }
+.kindchip .icon { font-size: .9rem }
+
+/* An expedition's covers, side by side as a set. */
+.set { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 1rem .8rem }
+.set-card { all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; min-width: 0 }
+.set-card .pic { display: block; border-radius: 8px; overflow: hidden; background: var(--scan); margin-bottom: .45rem;
+                 box-shadow: 0 0 0 .5px var(--line), 0 8px 18px -12px var(--shade); transition: transform .2s var(--spring) }
+.set-card .pic img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover }
+.set-card:active .pic { transform: scale(.97) }
+.set-card:focus-visible .pic { outline: 2px solid var(--cachet); outline-offset: 2px }
+.set-card .kind { display: inline-flex; align-items: center; gap: .3rem; font-size: .82rem; font-weight: 600 }
+.set-card .kind .icon { color: var(--cachet) }
+.set-card .s { font-size: .74rem; color: var(--muted) }
+
+/* People as a wrap of name pills with initials. */
+.people { display: flex; flex-wrap: wrap; gap: .45rem }
+.person { display: inline-flex; align-items: center; gap: .45rem; border: 0; cursor: pointer;
+          padding: .25rem .75rem .25rem .25rem; border-radius: 999px; background: var(--cell); font-size: .84rem }
+.person .avatar { width: 26px; height: 26px; font-size: .64rem }
+.person:active { background: var(--pressed) }
+
+/* Values in a row that are a list of names. */
+.row .v a + a { margin-left: 0 }
+.row .v i { color: var(--muted) }
+
+/* A segmented control across the width, e.g. Cachets | Field notes. */
+.seg-wide { display: flex; margin: .7rem 0 .2rem }
+.seg-wide button { flex: 1 }
+
+/* A quieter wide button. */
+.bigbutton.soft { background: var(--cell); color: var(--cachet); border: 0; width: 100%; cursor: pointer; margin-top: 1.4rem }
+
+/* An entry's own page: its picture on paper-white, or initials for a person. */
+.entry-pic { display: grid; place-items: center; margin: .2rem 0 0; padding: 1.2rem; min-height: 9rem;
+             border-radius: 14px; background: var(--scan);
+             box-shadow: 0 0 0 .5px var(--line), 0 14px 30px -18px var(--shade) }
+.entry-pic img { max-width: 100%; max-height: 15rem; object-fit: contain; display: block }
+.entry-pic.person { background: var(--cell); min-height: 0; padding: 1.4rem }
+.avatar.big { width: 76px; height: 76px; font-size: 1.6rem }
+.avatar.big .icon { font-size: 2rem }
+.script-card .script { font-family: var(--hand); font-size: 1rem; line-height: 1.5; white-space: pre-line; margin: 0 }
+.script-card .script-tr { color: var(--muted); font-size: .84rem; white-space: pre-line; margin: .6rem 0 0 }
+.footnote.unsure { color: var(--postmark) }
+.bigbutton.soft + .bigbutton.soft { margin-top: .5rem }
+
+/* Prose in a card. */
+.card { border-radius: var(--radius-cell); background: var(--cell); padding: .75rem .85rem;
+        font-size: .9rem; line-height: 1.5 }
+.card p { margin: 0 }
+.card p + p { margin-top: .5rem }
+
+/* One letter: the cover as a hero, then actions, then grouped facts. */
+.hero { position: relative; margin: .2rem 0 0; cursor: zoom-in; border-radius: 10px; background: var(--scan);
+        box-shadow: 0 1px 2px var(--shade), 0 14px 30px -16px var(--shade) }
+.hero img { display: block; width: 100%; height: auto; border-radius: 10px }
+.headline { margin: .95rem .1rem 0; display: flex; align-items: flex-start; gap: .6rem }
+.headline > div { flex: 1; min-width: 0 }
+.headline h2 { font-size: 1.42rem; font-weight: 720; letter-spacing: -.022em; line-height: 1.15; margin: 0 }
+.headline p { margin: .2rem 0 0; color: var(--muted); font-size: .86rem }
+
+.actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin: .9rem 0 0 }
+.action { all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column;
+          align-items: center; gap: .2rem; padding: .55rem .3rem .5rem; border-radius: var(--radius-cell);
+          background: var(--cell); color: var(--cachet); font-size: .74rem; font-weight: 590;
+          transition: transform .15s var(--spring) }
+.action .icon { font-size: 1.15rem }
+.action.primary { background: var(--cachet); color: var(--onaccent) }
+.action:active { transform: scale(.96) }
+.action:focus-visible { outline: 2px solid var(--cachet) }
+
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin: 1.3rem 0 0 }
+.pager button { border: 0; border-radius: var(--radius-cell); background: var(--cell); color: var(--cachet);
+                padding: .6rem .7rem; font-size: .84rem; font-weight: 560; cursor: pointer;
+                display: flex; align-items: center; gap: .3rem }
+.pager button + button { justify-content: flex-end }
+.pager button:disabled { color: var(--muted); opacity: .45; cursor: default }
+
+/* The year chart, in the bottom bar. */
+.years { display: flex; align-items: flex-end; gap: 5px; height: 46px }
+.bar { flex: 0 0 28px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+       gap: .2rem; height: 100%; background: none; border: 0; padding: 0; cursor: pointer }
+.bar i { display: block; width: 100%; border-radius: 5px 5px 2px 2px; background: var(--cachet);
+         opacity: .6; min-height: 3px; transition: opacity .15s }
+.bar:hover i { opacity: .9 }
+.bar.empty i { background: var(--line); opacity: 1 }
+.bar[aria-pressed="true"] i { opacity: 1; background: var(--postmark) }
+.bar span { font-size: .66rem; color: var(--muted); font-variant-numeric: tabular-nums }
+.legend { display: flex; flex-direction: column; gap: .2rem; padding-bottom: .15rem; font-size: .74rem; color: var(--muted) }
+.legend > span { display: inline-flex; align-items: center; gap: .4rem }
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block }
+.dot.o { border: 2px solid var(--cachet) }
+.dot.d { background: var(--postmark) }
+
+.footnote { margin: 1.2rem .2rem 0; color: var(--muted); font-size: .74rem; line-height: 1.4 }
+.empty { padding: .9rem .85rem; color: var(--muted); font-size: .86rem }
+
+/* Filter menus: native selects dressed as iOS pop-up buttons. */
+.menu .chev { font-size: .75rem; opacity: .8; pointer-events: none }
+.menu { display: inline-flex; align-items: center; gap: .3rem; min-width: 0;
+        padding: .42rem .75rem; height: 36px; border-radius: 999px; background: var(--fill); color: var(--cachet);
+        font-size: .8rem; font-weight: 590; position: relative }
+.menu select { -webkit-appearance: none; appearance: none; border: 0; background: none; color: inherit;
+               font-weight: inherit; min-width: 0; max-width: 13rem; text-overflow: ellipsis; padding: 0 .1rem 0 0; cursor: pointer; outline: none }
+.menu[hidden] { display: none }
+.menu.on { background: var(--cachet); color: var(--onaccent) }
+
+/* ── a message that floats up for a moment ──────────────────────────────── */
+.toast { position: fixed; z-index: 70; left: 50%; bottom: calc(var(--gap) + 64px); padding: .55rem 1.1rem;
+         border-radius: 999px; font-size: .86rem; font-weight: 560; pointer-events: none;
+         opacity: 0; transform: translate(-50%, 10px); transition: opacity .2s, transform .3s var(--spring) }
+.toast.on { opacity: 1; transform: translate(-50%, 0) }
+
+/* ── tablets: the top bar wraps, the catalogue narrows ──────────────────── */
+@media (max-width: 1180px) and (min-width: 901px) {
+  :root { --side-w: min(340px, var(--side-w-set, 340px)) }   /* never wider than [layout] width */
+  .topbar { flex-wrap: wrap; row-gap: .5rem }
+  .topbar .search { order: 5; flex: 1 1 100%; margin: 0 }
+  .filters { margin-left: auto }
+  .timeline .legend { display: none }
+}
+
+/* ── phones: one column, in reading order ──────────────────────────────────
+   Bar, globe, views and timeline, then the catalogue. Keep 900px in step with
+   narrow() in app.js and cover.js. */
+@media (max-width: 900px) {
+  body { overflow: auto; overflow-x: hidden; display: flex; flex-direction: column }
+  :root { --top: 0px; --bottom: 0px }
+  /* Reading order on a phone; on a wide screen everything is fixed in place. */
+  .topbar { order: 1 } .scope { order: 2 } .stage { order: 3 } .bottombar { order: 4 } .panel { order: 5 }
+  .scope { position: static; margin: .6rem var(--gap) 0 }
+  .scope-bar { border-radius: 18px }
+  .topbar { position: relative; top: auto; left: auto; right: auto; margin: var(--gap) var(--gap) 0;
+            flex-wrap: wrap; row-gap: .55rem; padding: .6rem .7rem .7rem .9rem }
+  .topbar .seg { margin-left: auto }
+  .topbar .search { order: 5; flex: 1 1 100%; margin: 0 }
+  .toplink span { display: none }
+  .toplink { padding: 0; width: 36px; justify-content: center }
+  .filters { order: 6; flex: 1 1 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)) }
+  .filters .menu { min-width: 0 }
+  .filters .menu select { max-width: none; width: 100% }
+  .filters .menu[hidden] { display: none }
+  .stage { position: relative; height: 56vh }
+  .bottombar { position: static; flex-direction: column; align-items: stretch; padding: 0 var(--gap);
+               gap: .6rem; margin-top: -.4rem }
+  .mapcontrols { justify-content: center }
+  .seg.views button { padding: .3rem .6rem; font-size: .76rem }
+  .timeline { justify-content: space-between }
+  .panel { position: static; width: auto; margin: var(--gap); overflow: visible }
+  .navbar { border-radius: var(--radius) var(--radius) 0 0 }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen.push, .screen.pop { animation: none }
+  .tip, .seg button, .bar i, .tile, .action, .navtitle { transition: none }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: color-mix(in srgb, var(--bg1) 95%, transparent) }
+}

@@ -1,0 +1,23 @@
+# Collectors.
+#
+# What appears on the public site is `display`, never the postal address:
+# the address lives on the envelope, which is blurred, and nowhere in this file.
+#
+#   display   the name shown everywhere on the site
+#   home      a key from places.toml; the globe draws routes to this point
+#   consent   false hides every letter of this collection from the build
+#   since     first year this collection appears, if you know it
+#   about     one or two sentences, shown when the collector is clicked
+#
+# To publish a collector's real name, set `display` to it and keep `consent = true`.
+# Ask first, in writing, and record the date in `consent_note`.
+
+[wr]
+display      = "Collection W. R."
+display_de   = "Sammlung W. R."
+home         = "potsdam"
+consent      = true
+consent_note = "Initials only until written consent for the full name is on file."
+since        = 2026
+about        = "WR is a collector based in Potsdam, Germany. Since the times of the GDR he has been collection letters from both east and west german polar expeditions. The majority of this archive is based on his collection."
+about_de     = "WR ist ein Sammler mit Sitz in Potsdam, Deutschland. Seit der Zeit der DDR sammelt er Briefe von polaren Expeditionen aus Ost- und Westdeutschland. Der Großteil dieses Archivs basiert auf seiner Sammlung."

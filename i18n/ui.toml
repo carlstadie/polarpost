@@ -1,0 +1,706 @@
+# Every piece of interface text, in every language, side by side.
+#
+# One table per string. The key is what the code asks for — t("stats.letters") —
+# and each language is a line underneath. Adding a language means adding one
+# line to each table and its code to [i18n] languages in config.toml; the build
+# stops and names any table that is missing it.
+#
+# {name}-style placeholders are filled in by the code. Keep them in every
+# language, though their position in the sentence may move.
+#
+# Strings that end in _one / _many are picked by count: "1 letter" / "3 letters".
+
+# ── masthead and controls ───────────────────────────────────────────────────
+["lang.label"]
+en = "Language"
+de = "Sprache"
+
+["filters.expedition"]
+en = "Expedition"
+de = "Expedition"
+
+["filters.all_expeditions"]
+en = "All expeditions"
+de = "Alle Expeditionen"
+
+["filters.collection"]
+en = "Collection"
+de = "Sammlung"
+
+["filters.all_collections"]
+en = "All collections"
+de = "Alle Sammlungen"
+
+["views.label"]
+en = "Turn the globe to"
+de = "Globus drehen nach"
+
+["views.arctic"]
+en = "Arctic"
+de = "Arktis"
+
+["views.alaska"]
+en = "Alaska"
+de = "Alaska"
+
+["views.mackenzie"]
+en = "Canada"
+de = "Kanada"
+
+["views.europe"]
+en = "Europe"
+de = "Europa"
+
+["views.spin"]
+en = "Spin"
+de = "Drehen"
+
+["legend.posted"]
+en = "Post office of departure"
+de = "Abgangspostamt"
+
+["legend.home"]
+en = "Recipient address"
+de = "Empfängeradresse"
+
+
+["timeline.label"]
+en = "Letters per year"
+de = "Briefe pro Jahr"
+
+["timeline.all"]
+en = "All years"
+de = "Alle Jahre"
+
+["globe.label"]
+en = "Globe showing where each letter was posted and where it was sent. Drag to turn, scroll to zoom."
+de = "Globus mit Aufgabe- und Zielort jedes Briefes. Ziehen zum Drehen, scrollen zum Zoomen."
+
+# ── tooltips on the globe ───────────────────────────────────────────────────
+["tip.posted_one"]
+en = "{n} letter posted here"
+de = "{n} Brief hier aufgegeben"
+
+["tip.posted_many"]
+en = "{n} letters posted here"
+de = "{n} Briefe hier aufgegeben"
+
+["tip.received_one"]
+en = "{n} letter received here"
+de = "{n} Brief hier empfangen"
+
+["tip.received_many"]
+en = "{n} letters received here"
+de = "{n} Briefe hier empfangen"
+
+# ── the catalogue panel ─────────────────────────────────────────────────────
+["overview.title"]
+en = "Polar Letters"
+de = "Post aus den Polarregionen"
+
+["overview.intro"]
+en = "There is and age-old tradition at the Alfred Wegener Institute. On each Expedition, we carry letters from polar philatelists, to be send back to them. Each letter tells a story; about the expedition, who was on it, and of course the special stamps and postmarks that were used. Here, for a first time, you can access these collections and stories digitally. Open a letter and follow everything on it."
+de = "Am Alfred-Wegener-Institut gibt es eine alte Tradition. Auf jeder Expedition werden Briefe von Polarphilatelisten mitgenommen, um sie an diese zurückzusenden. Jeder Brief erzählt eine Geschichte; über die Expedition, wer daran teilgenommen hat und natürlich über die besonderen Briefmarken und Stempel, die verwendet wurden. Hier können Sie erstmals auf diese Sammlungen und Geschichten digital zugreifen. Öffnen Sie einen Brief und verfolgen Sie alles darauf."
+
+["overview.filtered"]
+en = "Filtered view. Pick a route on the globe, or a letter below."
+de = "Gefilterte Ansicht. Wählen Sie eine Route auf dem Globus oder einen Brief darunter."
+
+["overview.shares_one"]
+en = "{n} letter shares this."
+de = "{n} Brief teilt dies."
+
+["overview.shares_many"]
+en = "{n} letters share this."
+de = "{n} Briefe teilen dies."
+
+["overview.in_view"]
+en = "Letters in view"
+de = "Briefe in der Ansicht"
+
+["overview.none"]
+en = "No letters match these filters."
+de = "Keine Briefe passen zu diesen Filtern."
+
+["overview.privacy"]
+en = "Recipient addresses are blurred on every scan and are not stored on this site."
+de = "Empfängeradressen sind auf jedem Scan unkenntlich gemacht und werden auf dieser Seite nicht gespeichert."
+
+["place.posted_one"]
+en = "{n} letter posted here"
+de = "{n} Brief hier aufgegeben"
+
+["place.posted_many"]
+en = "{n} letters posted here"
+de = "{n} Briefe hier aufgegeben"
+
+["place.received_one"]
+en = "{n} letter received here"
+de = "{n} Brief hier empfangen"
+
+["place.received_many"]
+en = "{n} letters received here"
+de = "{n} Briefe hier empfangen"
+
+["stats.letters"]
+en = "letters"
+de = "Briefe"
+
+["stats.expeditions"]
+en = "expeditions"
+de = "Expeditionen"
+
+["stats.stamps"]
+en = "stamps"
+de = "Briefmarken"
+
+["stats.people"]
+en = "people"
+de = "Personen"
+
+# ── one letter, in the panel ────────────────────────────────────────────────
+["letter.back"]
+en = "Overview"
+de = "Übersicht"
+
+["letter.route"]
+en = "{from} → {to}"
+de = "{from} → {to}"
+
+["letter.open_hint"]
+en = "{n} marks. Click the letter, or any mark on it, to open it."
+de = "{n} Markierungen. Klicken Sie auf den Brief oder eine Markierung, um ihn zu öffnen."
+
+["letter.on_cover"]
+en = "On this letter"
+de = "Auf diesem Brief"
+
+["letter.journey"]
+en = "The journey"
+de = "Die Reise"
+
+["letter.expedition"]
+en = "The expedition"
+de = "Die Expedition"
+
+["journey.posted"]
+en = "Posted"
+de = "Aufgegeben"
+
+["journey.delivered"]
+en = "Delivered"
+de = "Zugestellt"
+
+["journey.distance"]
+en = "Distance"
+de = "Entfernung"
+
+["journey.km"]
+en = "{km} km on the great circle"
+de = "{km} km auf dem Großkreis"
+
+["journey.heading"]
+en = "Heading"
+de = "Kurs"
+
+["kv.name"]
+en = "Name"
+de = "Name"
+
+["kv.run_by"]
+en = "Run by"
+de = "Durchgeführt von"
+
+["kv.season"]
+en = "Season"
+de = "Zeitraum"
+
+["kv.region"]
+en = "Region"
+de = "Region"
+
+["kv.collection"]
+en = "Collection"
+de = "Sammlung"
+
+["kv.record"]
+en = "Record"
+de = "Datensatz"
+
+["nav.prev"]
+en = "Previous letter"
+de = "Vorheriger Brief"
+
+["nav.next"]
+en = "Next letter"
+de = "Nächster Brief"
+
+# ── the detail view ─────────────────────────────────────────────────────────
+["detail.close"]
+en = "Close"
+de = "Schließen"
+
+["detail.hint"]
+en = "Click a mark or a tag to read it. ← → step through the marks, Esc closes."
+de = "Klicken Sie auf eine Markierung oder ein Etikett. ← → wechselt die Markierung, Esc schließt."
+
+["detail.alt"]
+en = "Letter of the {exp} expedition, posted at {place}. The recipient's address is blurred."
+de = "Brief der {exp}-Expedition, aufgegeben in {place}. Die Empfängeradresse ist unkenntlich gemacht."
+
+["fact.form"]
+en = "Form"
+de = "Art"
+
+["fact.ink"]
+en = "Ink"
+de = "Farbe"
+
+["fact.season"]
+en = "Season"
+de = "Zeitraum"
+
+["fact.region"]
+en = "Region"
+de = "Region"
+
+["fact.issued_by"]
+en = "Issued by"
+de = "Ausgabeland"
+
+["fact.value"]
+en = "Face value"
+de = "Nennwert"
+
+["fact.year"]
+en = "Year"
+de = "Jahr"
+
+["fact.series"]
+en = "Series"
+de = "Serie"
+
+["fact.catalogue"]
+en = "Catalogue"
+de = "Katalog"
+
+["fact.applied"]
+en = "Applied"
+de = "Abgeschlagen"
+
+["fact.by"]
+en = "By"
+de = "Von"
+
+["fact.reads"]
+en = "Reads"
+de = "Inschrift"
+
+["fact.since"]
+en = "Collecting since"
+de = "Sammelt seit"
+
+["fact.country"]
+en = "Country"
+de = "Land"
+
+["fact.role"]
+en = "Role"
+de = "Rolle"
+
+["form.label"]
+en = "Printed label"
+de = "Gedrucktes Etikett"
+
+["form.handstamp"]
+en = "Rubber handstamp"
+de = "Gummistempel"
+
+["form.manuscript"]
+en = "Written by hand"
+de = "Handschriftlich"
+
+["form.circular"]
+en = "Circular handstamp"
+de = "Rundstempel"
+
+["form.pictorial"]
+en = "Pictorial handstamp"
+de = "Bildstempel"
+
+["form.machine"]
+en = "Machine cancel"
+de = "Maschinenstempel"
+
+["form.meter"]
+en = "Postage meter"
+de = "Freistempel"
+
+["note.on_cover"]
+en = "On this letter: {text}"
+de = "Auf diesem Brief: {text}"
+
+["note.source"]
+en = "Source: {text}"
+de = "Quelle: {text}"
+
+["note.unconfirmed"]
+en = "Details not confirmed yet."
+de = "Angaben noch nicht bestätigt."
+
+["note.reading"]
+en = "Reading not confirmed."
+de = "Lesung nicht bestätigt."
+
+["note.some_readings"]
+en = "Some readings are not confirmed."
+de = "Einige Lesungen sind nicht bestätigt."
+
+["note.signatures_title"]
+en = "Signatures of the participants"
+de = "Unterschriften der Teilnehmer"
+
+["note.signatures_body"]
+en = "Each letter is signed by the participants before being sent home. A signed letter is proof of who was in the field this season."
+de = "Jeder Brief wird von den Teilnehmern unterschrieben, bevor er nach Hause geschickt wird. Ein unterschriebener Brief ist ein Beweis dafür, wer in dieser Saison im Feld war."
+
+["note.address"]
+en = "The recipient's address is blurred on every scan and is stored nowhere on this site."
+de = "Die Empfängeradresse ist auf jedem Scan unkenntlich gemacht und wird nirgends auf dieser Seite gespeichert."
+
+# ── following a thread ──────────────────────────────────────────────────────
+["thread.expedition"]
+en = "Expedition: {name}"
+de = "Expedition: {name}"
+
+["thread.collector"]
+en = "Collection: {name}"
+de = "Sammlung: {name}"
+
+["thread.place"]
+en = "Posted at: {name}"
+de = "Aufgegeben in: {name}"
+
+["thread.stamp"]
+en = "Bearing: {name}"
+de = "Mit der Marke: {name}"
+
+["thread.person"]
+en = "Signed by: {name}"
+de = "Unterschrieben von: {name}"
+
+["follow.expedition"]
+en = "Every letter from {name}"
+de = "Alle Briefe von {name}"
+
+["follow.stamp"]
+en = "Letters bearing this stamp"
+de = "Briefe mit dieser Marke"
+
+["follow.place"]
+en = "Posted from {name}"
+de = "Aufgegeben in {name}"
+
+["follow.collector"]
+en = "The whole collection"
+de = "Die ganze Sammlung"
+
+["follow.place_here"]
+en = "Letters posted here"
+de = "Hier aufgegebene Briefe"
+
+["follow.person"]
+en = "Letters this person signed"
+de = "Von dieser Person unterschrieben"
+
+# ── the sidebar: search, sections, drill-down lists ─────────────────────────
+["search.placeholder"]
+en = "Expeditions, stamps, people, places"
+de = "Expeditionen, Marken, Personen, Orte"
+
+["search.clear"]
+en = "Clear search"
+de = "Suche löschen"
+
+["search.none"]
+en = "No letters match “{q}”."
+de = "Keine Briefe passen zu „{q}“."
+
+["section.letters"]
+en = "Letters"
+de = "Briefe"
+
+["section.years"]
+en = "By year"
+de = "Nach Jahr"
+
+["index.expedition"]
+en = "Expeditions"
+de = "Expeditionen"
+
+["index.stamp"]
+en = "Stamps"
+de = "Briefmarken"
+
+["index.person"]
+en = "People"
+de = "Personen"
+
+["index.letters_one"]
+en = "{n} letter"
+de = "{n} Brief"
+
+["index.letters_many"]
+en = "{n} letters"
+de = "{n} Briefe"
+
+["action.open"]
+en = "Open"
+de = "Öffnen"
+
+["action.route"]
+en = "Play route"
+de = "Route abspielen"
+
+["action.expedition"]
+en = "Expedition"
+de = "Expedition"
+
+["nav.home"]
+en = "Back"
+de = "Zurück"
+
+# ── the cachet gallery ──────────────────────────────────────────────────────
+["gallery.title"]
+en = "Cachets"
+de = "Expeditionsstempel"
+
+["gallery.intro"]
+en = "Most expeditions have their own cachet, sticker or logo, wich is applied to every letter. Tap one to see the letters it was on."
+de = "Die meisten Expeditionen haben ihren eigenen Expeditionsstempel, Aufkleber oder Logo, der auf jeden Brief aufgebracht wird. Tippen Sie einen an, um die Briefe zu sehen, auf denen er war."
+
+["action.see_all"]
+en = "See all"
+de = "Alle"
+
+# ── sharing a letter ────────────────────────────────────────────────────────
+["action.share"]
+en = "Share this letter"
+de = "Diesen Brief teilen"
+
+["share.copied"]
+en = "Link copied"
+de = "Link kopiert"
+
+# ── sending us covers ───────────────────────────────────────────────────────
+["send.link"]
+en = "Send letters"
+de = "Einsenden"
+
+["send.write"]
+en = "Write to us"
+de = "Schreiben Sie uns"
+
+["send.steps"]
+en = "How it works"
+de = "So funktioniert es"
+
+["send.teaser"]
+en = "Collect polar mail? Send your letters along on an expedition."
+de = "Sie sammeln Polarpost? Schicken Sie Ihre Briefe mit auf Expedition."
+
+# ── kinds of cover, field notes, flights ───────────────────────────────────
+["filters.kind"]
+en = "Kind of letter"
+de = "Art des Briefs"
+
+["filters.all_kinds"]
+en = "All letters"
+de = "Alle Briefe"
+
+["gallery.notes"]
+en = "Field notes"
+de = "Feldnotizen"
+
+["gallery.notes_intro"]
+en = "Some letters carry a short description by the expedition's principle investigator about the goals and pourpose of the fieldwork. Tap one to read it on the letter."
+de = "Einige Briefe tragen eine kurze Beschreibung des Expeditionsleiters über die Ziele und den Zweck der Feldarbeit. Tippen Sie einen an, um ihn auf dem Brief zu lesen."
+
+["letter.flight"]
+en = "The flight"
+de = "Der Flug"
+
+["fact.date"]
+en = "Date"
+de = "Datum"
+
+["fact.aircraft"]
+en = "Aircraft"
+de = "Flugzeug"
+
+["fact.from"]
+en = "From"
+de = "Von"
+
+["fact.to"]
+en = "To"
+de = "Nach"
+
+["fact.round_trip"]
+en = "Round trip from"
+de = "Rundflug ab"
+
+["crew.pilots"]
+en = "Pilots"
+de = "Piloten"
+
+["crew.science"]
+en = "Science crew"
+de = "Wissenschaft"
+
+["crew.mechanics"]
+en = "Mechanics"
+de = "Mechanik"
+
+["crew.withheld"]
+en = "name not shown"
+de = "Name nicht angezeigt"
+
+["follow.flight"]
+en = "Letters on this flight"
+de = "Briefe von diesem Flug"
+
+["thread.flight"]
+en = "Flight: {name}"
+de = "Flug: {name}"
+
+["exp.letters"]
+en = "The letters"
+de = "Die Briefe"
+
+["exp.flights"]
+en = "Flights"
+de = "Flüge"
+
+["exp.people"]
+en = "People on the letters"
+de = "Personen auf den Briefen"
+
+["exp.show"]
+en = "Show only these on the globe"
+de = "Nur diese auf dem Globus zeigen"
+
+# ── "More like this" on a letter's page ────────────────────────────────────
+["more.title"]
+en = "More like this"
+de = "Mehr davon"
+
+["more.expedition_one"]
+en = "1 more letter from {name}"
+de = "1 weiterer Brief von {name}"
+
+["more.expedition_many"]
+en = "{n} more letters from {name}"
+de = "{n} weitere Briefe von {name}"
+
+["more.stamp_one"]
+en = "1 more letter with the {name} stamp"
+de = "1 weiterer Brief mit der Marke {name}"
+
+["more.stamp_many"]
+en = "{n} more letters with the {name} stamp"
+de = "{n} weitere Briefe mit der Marke {name}"
+
+["more.person_one"]
+en = "1 more letter with {name}"
+de = "1 weiterer Brief mit {name}"
+
+["more.person_many"]
+en = "{n} more letters with {name}"
+de = "{n} weitere Briefe mit {name}"
+
+["more.place_one"]
+en = "1 more letter posted at {name}"
+de = "1 weiterer Brief, aufgegeben in {name}"
+
+["more.place_many"]
+en = "{n} more letters posted at {name}"
+de = "{n} weitere Briefe, aufgegeben in {name}"
+
+["more.flight_one"]
+en = "1 more letter from the same flight"
+de = "1 weiterer Brief vom selben Flug"
+
+["more.flight_many"]
+en = "{n} more letters from the same flight"
+de = "{n} weitere Briefe vom selben Flug"
+
+["more.kind_one"]
+en = "{kind}: 1 more"
+de = "{kind}: 1 weiterer"
+
+["more.kind_many"]
+en = "{kind}: {n} more"
+de = "{kind}: {n} weitere"
+
+# ── what the map and lists are showing ─────────────────────────────────────
+["scope.showing"]
+en = "{n} of {total} letters"
+de = "{n} von {total} Briefen"
+
+["scope.clear"]
+en = "Show all"
+de = "Alle zeigen"
+
+["scope.remove"]
+en = "Remove filter: {name}"
+de = "Filter entfernen: {name}"
+
+# ── a page for every stamp, cachet, field note, person and flight ──────────
+["entry.on_covers"]
+en = "On these letters"
+de = "Auf diesen Briefen"
+
+["entry.expeditions_one"]
+en = "1 expedition"
+de = "1 Expedition"
+
+["entry.expeditions_many"]
+en = "{n} expeditions"
+de = "{n} Expeditionen"
+
+["gallery.stamps_intro"]
+en = "Every stamp on the letters, by issuing country. Click one to see which letters and expeditions carried it."
+de = "Alle Briefmarken auf den Briefen, nach Ausgabeland. Klicken Sie eine an, um zu sehen, auf welchen Briefen und Expeditionen sie war."
+
+["all.stamp"]
+en = "All stamps"
+de = "Alle Briefmarken"
+
+["all.cachet"]
+en = "All cachets"
+de = "Alle Expeditionsstempel"
+
+["all.fieldnote"]
+en = "All field notes"
+de = "Alle Feldnotizen"
+
+["follow.this_cachet"]
+en = "Letters with this cachet"
+de = "Briefe mit diesem Stempel"
+
+["follow.postmark"]
+en = "Letters with this postmark"
+de = "Briefe mit diesem Poststempel"
+
+["thread.cachet"]
+en = "Cachet: {name}"
+de = "Stempel: {name}"
+
+["thread.fieldnote"]
+en = "Field note: {name}"
+de = "Feldnotiz: {name}"
+
+["thread.postmark"]
+en = "Postmark: {name}"
+de = "Poststempel: {name}"

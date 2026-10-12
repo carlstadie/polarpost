@@ -1,0 +1,17 @@
+{
+  "name": "polarpost",
+  "private": true,
+  "description": "npm start builds the site, serves it at http://localhost:8777 and rebuilds and reloads when you save a file (scripts/serve.py). The build itself is Python (build.py); npm is only a shortcut, plus re-bundling d3 with npm run vendor.",
+  "scripts": {
+    "start": "python3 scripts/serve.py",
+    "build": "python3 build.py",
+    "vendor": "esbuild src/vendor-entry.js --bundle --format=esm --minify --outfile=site/assets/js/vendor/geo.js && node -e \"require('fs').copyFileSync('node_modules/world-atlas/land-50m.json','site/assets/land-50m.json')\""
+  },
+  "devDependencies": {
+    "d3-geo": "^3.1.1",
+    "d3-timer": "^3.0.1",
+    "esbuild": "^0.28.2",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  }
+}

@@ -1,0 +1,113 @@
+# Stamps.
+#
+# Key convention: <country>-<year>-<short name>-<value>, so the list stays
+# sorted and readable. Only `country`, `value` and `title` are required.
+#
+#   country       issuing postal administration
+#   value         face value as printed
+#   title         the design's name (title_de only where German differs)
+#   issued        year of issue
+#   series        the set it belongs to, if any
+#   catalogue     Scott / Michel / Unitrade number, whichever you use
+#   commemorates  why it exists — the line most visitors read
+#   image         optional file in refs/ — only with the right to publish it.
+#                 Leave it out and the build crops the stamp from your own scan.
+#   source        where the facts came from, so the next person can check
+#   verify        true while anything here is still unchecked
+
+[us-1999-snowy-owl-33c]
+country         = "United States"
+country_de      = "Vereinigte Staaten"
+value           = "33¢"
+title           = "Snowy Owl"
+title_de        = "Schneeeule"
+issued          = 1999
+series          = "Arctic Animals"
+series_de       = "Arktische Tiere"
+catalogue       = "Scott 3290"
+commemorates    = "One of five Arctic animals issued together in 1999 to mark the wildlife of the far north. The snowy owl breeds on open tundra and is one of the few birds that stays through the Arctic winter."
+commemorates_de = "Eine von fünf arktischen Tierarten, die 1999 gemeinsam erschienen, als Würdigung der Tierwelt des hohen Nordens. Die Schneeeule brütet in der offenen Tundra und gehört zu den wenigen Vögeln, die den arktischen Winter über bleiben."
+source          = "mysticstamp.com, Scott 3288–92, 1999 33¢ Arctic Animals"
+
+[us-1999-gray-wolf-33c]
+country         = "United States"
+country_de      = "Vereinigte Staaten"
+value           = "33¢"
+title           = "Gray Wolf"
+title_de        = "Grauwolf"
+issued          = 1999
+series          = "Arctic Animals"
+series_de       = "Arktische Tiere"
+catalogue       = "Scott 3292"
+commemorates    = "From the same 1999 Arctic Animals set as the snowy owl. The gray wolf ranges across the whole boreal and tundra north."
+commemorates_de = "Aus derselben Serie Arktische Tiere von 1999 wie die Schneeeule. Der Grauwolf lebt im gesamten borealen und arktischen Norden."
+source          = "mysticstamp.com, Scott 3288–92, 1999 33¢ Arctic Animals"
+
+[us-2022-global-forever-flower]
+country         = "United States"
+country_de      = "Vereinigte Staaten"
+value           = "Global Forever"
+title           = "African Daisy"
+title_de        = "African Daisy"
+issued          = 2022
+series          = "Global Forever"
+series_de       = "Global Forever"
+commemorates    = "A non-denominated international rate stamp: it stays valid for one ounce to anywhere outside the United States however the rate changes. The round format marks it out as the international issue."
+commemorates_de = "Eine Marke ohne Wertangabe für das Auslandsporto: Sie gilt für einen Brief bis eine Unze in jedes Land außerhalb der USA, wie sich der Tarif auch ändert. Das runde Format kennzeichnet die Auslandsausgabe."
+#verify          = true
+
+[ca-1963-frobisher-5c]
+country         = "Canada"
+country_de      = "Kanada"
+value           = "5¢"
+title           = "Sir Martin Frobisher"
+issued          = 1963
+commemorates    = "Frobisher led three voyages to Baffin Island between 1576 and 1578 looking for the North-West Passage, and brought home shiploads of worthless ore he believed was gold. A fitting stamp for mail leaving the Arctic coast."
+commemorates_de = "Frobisher unternahm zwischen 1576 und 1578 drei Fahrten nach Baffin Island auf der Suche nach der Nordwestpassage und brachte Schiffsladungen wertlosen Erzes heim, das er für Gold hielt. Eine passende Marke für Post von der arktischen Küste."
+#verify          = true
+
+[ca-inuit-hunting-12c]
+country         = "Canada"
+country_de      = "Kanada"
+value           = "12¢"
+issued          = 1977
+title           = "Inuit Hunting – Disguised Caribou Hunter"
+title_de        = "Inuit-Jagdszene – Verkleideter Karibu-Jäger"
+series          = "Inuit art"
+series_de       = "Inuit-Kunst"
+commemorates    = "Part of Canada Post's long-running use of Inuit printmaking on definitives. The caption on the stamp names the scene in English and French."
+commemorates_de = "Teil der langen Reihe kanadischer Dauermarken mit Inuit-Druckgrafik. Die Beschriftung nennt die Szene auf Englisch und Französisch."
+#verify          = true
+
+[ca-arctic-landscape-365]
+country         = "Canada"
+country_de      = "Kanada"
+value           = "$3.65"
+title           = "Arctic landscape, international rate"
+title_de        = "Arktische Landschaft, Auslandsporto"
+series          = "From Far and Wide"
+series_de       = "From Far and Wide"
+commemorates    = "A high-value definitive covering the international letter rate. The international rate stamp features a photograph of the Qarlinngua sea arch in Arctic Bay, Nunavut. "
+commemorates_de = "Ein hoher Dauermarkenwert für das Auslandsporto. Die Auslandsporto-Marke zeigt ein Foto des Qarlinngua-See-Arches in Arctic Bay, Nunavut. "
+
+
+[ca-inuit-community-17c]
+country         = "Canada"
+country_de      = "Kanada"
+value           = "17¢"
+title           = "Inuit Drum Dancers"
+series          = "Inuit art"
+series_de       = "Inuit-Kunst"
+commemorates    = "Drum dancers, from a series on Inuit community life. The drum dance is the central social form of the western Arctic communities."
+commemorates_de = "Trommeltänzer, aus einer Serie über das Gemeinschaftsleben der Inuit. Der Trommeltanz ist die zentrale gesellige Form in den Gemeinden der westlichen Arktis."
+
+[fi-priority-lake]
+country         = "Finland"
+country_de      = "Finnland"
+value           = "Priority, non-denominated"
+value_de        = "Priority, ohne Wertangabe"
+title           = "Glow of the Sun"
+title_de        = "Glow of the Sun"
+commemorates    = "Jukka Risikko photographed these stamps glowing with the first rays of the morning sun. The stamps feature cottongrass by the edge of a marsh in Alajoki, Lapua, and a lakeside landscape in Orisberg, Isokyrö. The graphic design of the stamps was created by Stiina Hovi."
+commemorates_de = "Jukka Risikko fotografierte diese Marken im ersten Licht der Morgensonne. Die Marken zeigen Wollgras am Rand eines Sumpfes in Alajoki, Lapua, und eine Landschaft am See in Orisberg, Isokyrö. Das Grafikdesign der Marken stammt von Stiina Hovi."
+

@@ -1,0 +1,192 @@
+# Everything about how Polarpost looks and behaves.
+# No colour and no font name belongs anywhere else in the project.
+
+[site]
+title      = "Polarpost"
+tagline    = "For years, philetists have collected letters from the Alfred Wegener Institute's expeditions to the polar regions. Now you can see them all in one place."
+tagline_de = "Seit Jahren sammeln Philatelisten Briefe von den Expeditionen des Alfred-Wegener-Instituts in die Polarregionen. Nun können Sie sie alle an einem Ort sehen."
+org        = "Alfred Wegener Institute"
+org_de     = "Alfred-Wegener-Institut"
+
+# The logo beside the name in the top bar (scripts/make_logo.py draws it; a PNG works too). No file, no logo —
+# the build checks. `logo_dark` is optional and used in dark mode if present.
+logo       = "assets/logo-animated.svg"        # assets/logo.svg for the still version
+logo_dark  = "assets/logo-animated-dark.svg"   # assets/logo-dark.svg likewise
+
+[i18n]
+languages = ["en", "de"]
+default   = "en"
+# How each language writes dates and numbers.
+locales   = { en = "en-GB", de = "de-DE" }
+# Data fields that should exist in every language. English is the plain field
+# (`about`), every other language is a sibling with a suffix (`about_de`).
+# The build lists every entry still missing one; missing ones fall back to
+# English on the site, so nothing breaks while you catch up.
+fields = ["about", "topic", "season", "region", "shows", "colour",
+          "commemorates", "series", "country", "role", "note", "tagline",
+          "purpose"]
+
+[fonts]
+# The system face first: San Francisco on Apple devices, Segoe on Windows,
+# whatever the platform's own is elsewhere. Nothing to download.
+ui   = "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+# Transcriptions of handwriting are set apart from our own text.
+hand = "'New York', 'Iowan Old Style', Georgia, 'Times New Roman', serif"
+
+[type]
+title_size  = "2rem"        # the large title at the top of the sidebar
+base_size   = "15px"
+line_height = "1.5"
+
+[layout]
+# Where the panels sit on a wide screen. On a phone everything stacks in
+# reading order instead, whatever is set here.
+topbar    = "top"     # top | bottom: the bar with the name, search and menus.
+                      # At the bottom, the globe views and timeline move to the top.
+catalogue = "right"   # right | left: the panel with the letters
+width     = 425       # the letter panel's width, in pixels
+gap       = 14        # space between the window edge and the panels, in pixels
+radius    = 22        # how round the panels' corners are, in pixels
+
+[glass]
+# The panels are frosted glass over the globe.
+opacity      = 0.52   # 0 = completely clear, 1 = solid. Light mode.
+opacity_dark = 0.50   # the same in dark mode
+blur         = 26     # how strongly the globe behind is blurred, in pixels
+
+[colors.light]
+bg1        = "#E8EDF1"     # the page behind the globe, top
+bg2        = "#D3DCE3"     # … and bottom
+ink        = "#0F2236"
+muted      = "#5A6B7C"
+cachet     = "#1F3F8F"     # links, routes, the active mark
+cachetsoft = "#6C86C4"
+postmark   = "#9C3B33"     # destinations, cancellations
+ocean      = "#14324F"
+land       = "#F3F2EC"
+coast      = "#8AA3B8"
+line       = "rgba(15, 34, 54, .10)"
+glass      = "rgba(255, 255, 255, .52)"   # the panels' fill
+glassedge  = "rgba(255, 255, 255, .70)"   # their rim
+glassspec  = "rgba(255, 255, 255, .95)"   # the highlight along the top edge
+shade      = "rgba(16, 38, 59, .16)"      # the shadow they cast
+scan       = "#FFFFFF"                    # behind a letter while it loads
+onaccent   = "#FFFFFF"                    # numbers on the coloured mark dots
+cell       = "rgba(255, 255, 255, .62)"   # a row in a grouped list
+fill       = "rgba(118, 118, 128, .12)"   # search field, secondary buttons
+pressed    = "rgba(118, 118, 128, .16)"   # a row while it is held down
+
+[colors.dark]
+bg1        = "#0B1824"
+bg2        = "#07111A"
+ink        = "#E8EDF2"
+muted      = "#93A6B7"
+cachet     = "#9CB4F0"
+cachetsoft = "#5E76B0"
+postmark   = "#E39286"
+ocean      = "#0B1C2C"
+land       = "#C9D4DC"
+coast      = "#54718A"
+line       = "rgba(255, 255, 255, .10)"
+glass      = "rgba(24, 40, 56, .50)"
+glassedge  = "rgba(255, 255, 255, .14)"
+glassspec  = "rgba(255, 255, 255, .22)"
+shade      = "rgba(0, 0, 0, .40)"
+scan       = "#F4F4F0"
+onaccent   = "#0B1824"
+cell       = "rgba(255, 255, 255, .07)"
+fill       = "rgba(118, 118, 128, .24)"
+pressed    = "rgba(255, 255, 255, .10)"
+
+[globe]
+initial_rotate = [-140, 70]   # [lon, lat] facing the viewer at load — the western Arctic
+arc_lift       = 0.24
+arc_samples    = 64
+min_zoom       = 0.6
+max_zoom       = 6.0
+inertia_decay  = 0.93
+level_north    = true
+
+# The kinds of cover. Every letter says which it is (`kind = "signed"`). The
+# order here is the order everywhere on the site; `icon` is one of the names
+# in site/assets/js/icons.js.
+[kinds.signed]
+label     = "Signed letter"
+label_de  = "Unterschriebener Brief"
+plural    = "Signed letters"
+plural_de = "Unterschriebene Briefe"
+about     = "The expedition's cachet, signed by the people in the field."
+about_de  = "Der Expeditionsstempel, unterschrieben von den Leuten im Feld."
+icon      = "pen"
+
+[kinds.description]
+label     = "Letter with description"
+label_de  = "Brief mit Beschreibung"
+plural    = "Letters with description"
+plural_de = "Briefe mit Beschreibung"
+about     = "The team describes its fieldwork on the letter by hand."
+about_de  = "Das Team beschreibt seine Feldarbeit von Hand auf dem Brief."
+icon      = "lines"
+
+[kinds.flight]
+label     = "Flight letter"
+label_de  = "Flugbrief"
+plural    = "Flight letters"
+plural_de = "Flugbriefe"
+about     = "Carried on a research flight; the letter lists the date, crew and airfields."
+about_de  = "Auf einem Forschungsflug mitgeflogen; der Brief nennt Datum, Besatzung und Flugplätze."
+icon      = "plane"
+
+# How each kind of mark is labelled and tinted. Add a kind here and the
+# interface picks it up.
+[marks.cachet]
+label    = "Expedition cachet"
+label_de = "Expeditionsstempel"
+tint     = "cachet"
+
+[marks.fieldnote]
+label    = "Field note"
+label_de = "Feldnotiz"
+tint     = "cachet"
+
+[marks.flight]
+label    = "Flight"
+label_de = "Flug"
+tint     = "cachet"
+
+[marks.stamp]
+label    = "Stamp"
+label_de = "Briefmarke"
+tint     = "cachet"
+
+[marks.postmark]
+label    = "Postmark"
+label_de = "Poststempel"
+tint     = "postmark"
+
+[marks.signatures]
+label    = "Signatures"
+label_de = "Unterschriften"
+tint     = "cachetsoft"
+
+[marks.collector]
+label    = "Addressed to"
+label_de = "Adressiert an"
+tint     = "cachetsoft"
+
+[marks.place]
+label    = "Place"
+label_de = "Ort"
+tint     = "cachet"
+
+[detail]
+# The marks the big view is really about: their tags are set at full weight
+# and the view opens on the first of these the cover has.
+featured = ["fieldnote", "flight", "cachet", "stamp"]
+
+[privacy]
+require_consent = true
+max_scan_kb     = 400
+# Boxes listed here are never cropped into a reference thumbnail, because the
+# crop would undo the blur applied to the scan.
+never_crop      = ["collector"]

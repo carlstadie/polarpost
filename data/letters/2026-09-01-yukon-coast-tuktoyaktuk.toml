@@ -1,0 +1,49 @@
+id         = "L0001"
+expedition = "yukon-coast-2026"
+kind       = "signed"
+collector  = "wr"
+posted_at  = "tuktoyaktuk"
+posted_on  = 2026-09-01
+year       = 2026
+cover      = "2026-yukon-coast-tuktoyaktuk.jpg"
+
+note = """
+Carried along the Yukon coast and posted at Tuktoyaktuk on the way out. The
+counter strike landed upside down, which is how a busy northern office works.
+"""
+note_de = """
+Entlang der Yukon-Küste mitgenommen und auf dem Rückweg in Tuktoyaktuk aufgegeben.
+Der Schalterstempel steht auf dem Kopf – so arbeitet ein volles Postamt im Norden.
+"""
+
+[[marks]]
+ref = "cachet:yukon-coast-2026"
+box = [0.068, 0.020, 0.371, 0.539]
+
+[[marks]]
+ref  = "stamp:ca-inuit-hunting-12c"
+box  = [0.530, 0.016, 0.255, 0.289]
+note = "Tied to the cover by the diagonal machine bars, not by the counter handstamp."
+note_de = "Durch die schrägen Maschinenstriche entwertet, nicht durch den Schalterstempel."
+
+[[marks]]
+ref = "stamp:ca-arctic-landscape-365"
+box = [0.789, 0.102, 0.173, 0.193]
+
+[[marks]]
+ref  = "postmark:tuktoyaktuk-po"
+box  = [0.460, 0.346, 0.339, 0.264]
+date = 2026-09-01
+note = "Struck upside down."
+note_de = "Auf dem Kopf abgeschlagen."
+
+[[marks]]
+ref   = "signatures"
+box   = [0.050, 0.539, 0.403, 0.274]
+people = ["ria-potzold", "leena-viitanen"]
+note  = "Two names in the sender's hand at lower left. Readings not yet confirmed."
+note_de = "Zwei Namen in der Hand des Absenders unten links. Lesungen nicht bestätigt."
+
+[[marks]]
+ref = "collector:wr"
+box = [0.583, 0.671, 0.417, 0.285]

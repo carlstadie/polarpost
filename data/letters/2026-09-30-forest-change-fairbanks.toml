@@ -1,0 +1,51 @@
+id         = "L0005"
+expedition = "forest-change-alaska-2026"
+kind       = "description"
+collector  = "wr"
+posted_at  = "fairbanks"
+posted_on  = 2026-09-30
+year       = 2026
+cover      = "2026-forest-change-fairbanks.jpg"
+
+note = """
+Eleven handwritten lines explaining drunken forests: trees on degrading permafrost
+sink into unstable ground and lean, and the inventory records both the angle and
+how the trees respond. The best piece of writing on any cover in the collection.
+"""
+note_de = """
+Elf handgeschriebene Zeilen über ‚Drunken Forests‘: Auf degradierendem Permafrost
+sacken Bäume in instabilen Boden ab und neigen sich, und die Inventur erfasst
+Winkel und Reaktion. Der schönste Text auf einem Umschlag der Sammlung.
+"""
+
+[[marks]]
+ref  = "fieldnote:forest-change-alaska-2026"
+box  = [0.017, 0.031, 0.470, 0.606]
+note = "Written in German, filling the whole left half of the cover."
+note_de = "Auf Deutsch geschrieben, über die ganze linke Hälfte des Umschlags."
+
+[[marks]]
+ref  = "postmark:alaskan-frontier-fairbanks"
+box  = [0.270, 0.068, 0.300, 0.112]
+date = 2026-09-30
+note = "The same machine laid the wavy bars across the foot of the cover."
+note_de = "Dieselbe Maschine setzte die Wellenlinien am unteren Rand."
+
+[[marks]]
+ref = "stamp:us-1999-gray-wolf-33c"
+box = [0.519, 0.016, 0.186, 0.322]
+
+[[marks]]
+ref = "stamp:us-2022-global-forever-flower"
+box = [0.705, 0.031, 0.254, 0.400]
+
+[[marks]]
+ref    = "signatures"
+box    = [0.021, 0.678, 0.331, 0.226]
+people = ["nils-h"]
+note   = "Three signatures; one gives the first name Nils."
+note_de = "Drei Unterschriften; eine nennt den Vornamen Nils."
+
+[[marks]]
+ref = "collector:wr"
+box = [0.600, 0.682, 0.400, 0.238]

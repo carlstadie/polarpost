@@ -1,0 +1,48 @@
+id         = "L0006"
+expedition = "duccem-2026"
+kind       = "signed"
+collector  = "wr"
+posted_at  = "tuktoyaktuk"
+posted_on  = 2026-09-01
+year       = 2026
+cover      = "2026-duccem-tuktoyaktuk.jpg"
+
+note = """
+Posted at Tuktoyaktuk on the same day as the Yukon Coast cover, with the same
+franking and the same upside-down counter strike. Two covers from two different
+teams that happened to reach the same counter together.
+"""
+note_de = """
+Am selben Tag wie der Yukon-Coast-Umschlag in Tuktoyaktuk aufgegeben, mit gleicher
+Frankatur und gleichem kopfstehenden Schalterstempel. Zwei Umschläge zweier Teams,
+die zufällig zusammen am Schalter lagen.
+"""
+
+[[marks]]
+ref = "fieldnote:duccem-2026"
+box = [0.025, 0.040, 0.398, 0.290]
+
+[[marks]]
+ref = "stamp:ca-inuit-hunting-12c"
+box = [0.501, 0.016, 0.275, 0.294]
+
+[[marks]]
+ref = "stamp:ca-arctic-landscape-365"
+box = [0.784, 0.100, 0.177, 0.190]
+
+[[marks]]
+ref  = "postmark:tuktoyaktuk-po"
+box  = [0.424, 0.330, 0.367, 0.270]
+date = 2026-09-01
+note = "Struck upside down, as on the Yukon Coast cover of the same day."
+note_de = "Auf dem Kopf abgeschlagen, wie auf dem Yukon-Coast-Umschlag vom selben Tag."
+
+[[marks]]
+ref  = "signatures"
+box  = [0.028, 0.480, 0.396, 0.500]
+note = "Three large signatures. Not yet transcribed."
+note_de = "Drei große Unterschriften. Noch nicht transkribiert."
+
+[[marks]]
+ref = "collector:wr"
+box = [0.590, 0.644, 0.410, 0.276]

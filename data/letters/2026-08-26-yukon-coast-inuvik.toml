@@ -1,0 +1,49 @@
+id         = "L0002"
+expedition = "yukon-coast-2026"
+kind       = "signed"
+collector  = "wr"
+posted_at  = "inuvik"
+posted_on  = 2026-08-26
+year       = 2026
+cover      = "2026-yukon-coast-inuvik.jpg"
+
+note = """
+The same expedition cachet as the Tuktoyaktuk cover, but posted at Inuvik on the
+way in, and cancelled with the pictorial polar bear mark rather than the counter
+handstamp. Six members of the party signed it.
+"""
+note_de = """
+Derselbe Expeditionsstempel wie auf dem Umschlag aus Tuktoyaktuk, aber auf dem
+Hinweg in Inuvik aufgegeben und mit dem Eisbären-Bildstempel statt dem
+Schalterstempel entwertet. Sechs Mitglieder der Gruppe haben unterschrieben.
+"""
+
+[[marks]]
+ref = "cachet:yukon-coast-2026"
+box = [0.068, 0.017, 0.376, 0.550]
+
+[[marks]]
+ref  = "stamp:ca-1963-frobisher-5c"
+box  = [0.581, 0.017, 0.195, 0.258]
+note = "A 1963 stamp still doing postal duty in 2026, which is legal in Canada and a small pleasure on an Arctic cover."
+note_de = "Eine Marke von 1963, die 2026 noch Porto leistet – in Kanada zulässig und auf einem arktischen Umschlag eine kleine Freude."
+
+[[marks]]
+ref = "stamp:ca-arctic-landscape-365"
+box = [0.792, 0.032, 0.165, 0.243]
+
+[[marks]]
+ref  = "postmark:inuvik-nt-pictorial"
+box  = [0.648, 0.201, 0.309, 0.328]
+date = 2026-08-26
+
+[[marks]]
+ref    = "signatures"
+box    = [0.036, 0.603, 0.420, 0.328]
+people = ["m-fritz", "s-owl", "a-irrgang"]
+note   = "Six signatures in blue ink; three readable, none confirmed."
+note_de = "Sechs Unterschriften in blauer Tinte; drei lesbar, keine bestätigt."
+
+[[marks]]
+ref = "collector:wr"
+box = [0.605, 0.681, 0.395, 0.233]
